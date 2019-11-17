@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+         Joozify เลือกเพลงนับล้านได้ด้วยปลายนิ้วมือคุณ
         </p>
         <a
           className="App-link"
@@ -19,6 +19,18 @@ function App() {
         >
           Go go power ranger
         </a>
+        <button>
+          Language
+        </button>
+        <button>
+          ลงชื่อเข้าใช้
+        </button>
+        <button>
+          เข้าสู่ระบบด้วย facebook
+        </button>
+        <button>
+          สมัครใช้บริการ
+        </button>
       </header>
     </div>
   );
