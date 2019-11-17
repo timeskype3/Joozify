@@ -22,9 +22,11 @@ function App() {
         <button>
           Language
         </button>
+        
         <button>
-          ลงชื่อเข้าใช้
+          เข้าสู่ระบบ
         </button>
+
         <button>
           เข้าสู่ระบบด้วย facebook
         </button>
