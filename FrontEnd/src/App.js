@@ -1,12 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Button } from 'antd';
+import 'antd/dist/antd.css';
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -18,6 +19,13 @@ function App() {
         >
           Test5
         </a>
+        <div>
+          <Button type="primary">Primary</Button>
+          <Button>Default</Button>
+          <Button type="dashed">Dashed</Button>
+          <Button type="danger">Danger</Button>
+          <Button type="link">Link</Button>
+        </div>
       </header>
     </div>
   );
