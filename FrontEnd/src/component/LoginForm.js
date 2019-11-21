@@ -1,6 +1,5 @@
 import React from 'react';
 import auth from '../firebase';
-import { Link } from 'react-router-dom';
 
 class LoginForm extends React.Component {
   componentDidMount() {
@@ -103,11 +102,10 @@ class LoginForm extends React.Component {
                 <div className="control">
                   <button className="button is-link"> Submit </button>
                 </div>
-                <Link to="/">
-                  <div className="control">
-                    <button className="button is-text"> Cancel </button>
-                  </div>
-                </Link>
+
+                <div className="control">
+                  <button className="button is-text"> Cancel </button>
+                </div>
               </div>
             </form>
           </div>

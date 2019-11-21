@@ -30,37 +30,36 @@ export default class Login extends Component {
   };
 
   render() {
-    function Login() {
-      const navStyle = {
-        color: 'white'
-      };
-      return (
-        <div>
-          <div className="Ellipse" />
-          <p>Joozify.</p>
-          <p>A millions song that on your hand</p>
-          <Link style={navStyle} to="/loginform">
-            <button onClick={this.onBtnLogin} className="Login-button">
-              Log in
-            </button>
-          </Link>
+    const navStyle = {
+      color: 'white'
+    };
+    return (
+      <div>
+        <div className="Ellipse" />
+        <p>Joozify.</p>
+        <p>A millions song that on your hand</p>
 
-          <Modal
-            title="Login"
-            visible={this.state.showModal}
-            onCancel={this.onClose}
-            footer={() => null}
-          >
-            <LoginForm />
-          </Modal>
+        <button onClick={this.onBtnLogin} className="Login-button">
+          Log in
+        </button>
 
-          <br />
+        <Modal
+          title="Login"
+          visible={this.state.showModal}
+          onCancel={this.onClose}
+          footer={() => null}
+        >
+          <LoginForm />
+        </Modal>
+
+        <br />
+        <Link style={navStyle} to="/loginform">
           <button className="Facebook-button">Log in via facebook</button>
-          <div>
-            <Button type="link">Sign Up</Button>
-          </div>
+        </Link>
+        <div>
+          <Button type="link">Sign Up</Button>
         </div>
-      );
-    }
+      </div>
+    );
   }
 }
