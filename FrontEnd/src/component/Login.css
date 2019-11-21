@@ -1,3 +1,14 @@
+/* .font-face {
+  font-family: 'SFProH';
+  src: local('SFProH'),
+    url('asset/fonts/SFProText-Heavy.ttf') format('truetype');
+} */
+.Login {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
 .Login-button {
   text-align: center;
   font-size: 20px;

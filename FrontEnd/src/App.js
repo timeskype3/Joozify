@@ -1,7 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import Login from './component/Login';
-import LoginForm from './component/LoginForm';
+import Home from './component/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './App.css';
@@ -9,11 +9,11 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div>
         <header className="App-header">
           <Switch>
             <Route path="/" exact component={Login} />
-            <Route path="/loginform" component={LoginForm} />
+            <Route path="/home" component={Home} />
           </Switch>
         </header>
       </div>

@@ -34,7 +34,7 @@ export default class Login extends Component {
       color: 'white'
     };
     return (
-      <div>
+      <div className="Login">
         <div className="Ellipse" />
         <p>Joozify.</p>
         <p>A millions song that on your hand</p>
@@ -53,11 +53,13 @@ export default class Login extends Component {
         </Modal>
 
         <br />
-        <Link style={navStyle} to="/loginform">
-          <button className="Facebook-button">Log in via facebook</button>
-        </Link>
+
+        <button className="Facebook-button">Log in via facebook</button>
+
         <div>
-          <Button type="link">Sign Up</Button>
+          <Link style={navStyle} to="/home">
+            <Button type="link">Sign Up</Button>
+          </Link>
         </div>
       </div>
     );
