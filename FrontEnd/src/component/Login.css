@@ -21,3 +21,34 @@
   border-radius: 50px;
   cursor: pointer;
 }
+
+.Ellipse {
+  position: absolute;
+  width: 481px;
+  height: 481px;
+  left: -98.5px;
+  top: 601px;
+  border-radius: 50%;
+  background: #ff9500;
+}
+
+.Rectangle {
+  position: absolute;
+  width: 335px;
+  height: 292px;
+  left: 936px;
+  top: 441px;
+
+  background: #77fe0e;
+}
+
+.Polygon {
+  position: absolute;
+  width: 385.8px;
+  height: 262.01px;
+  left: 1076.6px;
+  top: 376.32px;
+
+  background: #125fd6;
+  transform: rotate(-179.91deg);
+}

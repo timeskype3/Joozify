@@ -1,17 +1,24 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import Login from './component/Login';
+import LoginForm from './component/LoginForm';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 import './App.css';
 
-export default class App extends Component {
-  render() {
-    return (
+function App() {
+  return (
+    <Router>
       <div className="App">
         <header className="App-header">
-          <p>Joozify. A millions song that on your hand</p>
-          <Login />
+          <Switch>
+            <Route path="/" exact component={Login} />
+            <Route path="/loginform" component={LoginForm} />
+          </Switch>
         </header>
       </div>
-    );
-  }
+    </Router>
+  );
 }
+
+export default App;
