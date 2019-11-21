@@ -1,20 +1,53 @@
-import React from 'react';
-import { Button } from 'antd';
+import React, { Component } from 'react';
+import { Button, Modal } from 'antd';
 import 'antd/dist/antd.css';
-
 import './Login.css';
+import LoginForm from './LoginForm';
 
-function Login() {
-  return (
-    <div>
-      <button className="Login-button">Log in</button>
-      <br />
-      <button className="Facebook-button">Log in via facebook</button>
+export default class Login extends Component {
+  state = {
+    showModal: false
+  };
+
+  onBtnLogin = () => {
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        showModal: true
+      };
+    });
+  };
+
+  onClose = () => {
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        showModal: false
+      };
+    });
+  };
+
+  render() {
+    return (
       <div>
-        <Button type="link">Sign Up</Button>
-      </div>
-    </div>
-  );
-}
+        <button onClick={this.onBtnLogin} className="Login-button">
+          Log in
+        </button>
+        <Modal
+          title="Login"
+          visible={this.state.showModal}
+          onCancel={this.onClose}
+          footer={() => null}
+        >
+          <LoginForm />
+        </Modal>
 
-export default Login;
+        <br />
+        <button className="Facebook-button">Log in via facebook</button>
+        <div>
+          <Button type="link">Sign Up</Button>
+        </div>
+      </div>
+    );
+  }
+}
