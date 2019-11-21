@@ -53,7 +53,7 @@ export default class Login extends Component {
         </Modal>
 
         <br />
-        <Link style={navStyle} to="/loginform">
+        <Link style={navStyle} to="/LoginFB">
           <button className="Facebook-button">Log in via facebook</button>
         </Link>
         <div>
