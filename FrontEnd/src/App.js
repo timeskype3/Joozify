@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { Button } from 'antd';
+import React from 'react';
 import 'antd/dist/antd.css';
 import Login from './component/Login';
 import './App.css';
