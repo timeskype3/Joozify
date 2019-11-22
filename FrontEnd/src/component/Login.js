@@ -55,7 +55,12 @@ export default class Login extends Component {
           <h2>A millions songs </h2>
           <h3>that on your hand</h3>
         </div>
-        <button id="1" onClick={this.onBtnLogin} className="Login-button">
+        <button
+          id="1"
+          onClick={this.onBtnLogin}
+          className="Login-button"
+          style={navStyle}
+        >
           Log in
         </button>
 
@@ -88,6 +93,11 @@ export default class Login extends Component {
             onClick={this.onBtnLogin}
             className="SignUp-button"
             type="link"
+            style={{
+              fontFamily: 'sf_pro_displayregular',
+              fontSize: '18px',
+              color: '#ffbe17'
+            }}
           >
             SignUp
           </Button>

@@ -12,14 +12,12 @@ function App() {
   return (
     <Router>
       <div>
-        <header className="App-header">
-          <Switch>
-            <Route path="/" exact component={Login} />
-            <Route path="/main" component={Main} />
-            <Route path="/loginfb" component={LoginFB} />
-            <Route path="/signupform" component={SignUpForm} />
-          </Switch>
-        </header>
+        <Switch>
+          <Route path="/" exact component={Login} />
+          <Route path="/main" component={Main} />
+          <Route path="/loginfb" component={LoginFB} />
+          <Route path="/signupform" component={SignUpForm} />
+        </Switch>
       </div>
     </Router>
   );

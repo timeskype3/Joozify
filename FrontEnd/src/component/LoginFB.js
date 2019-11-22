@@ -21,7 +21,7 @@ export default class LoginFB extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div>
         {this.state.isSignedIn ? (
           <span>
             <div>Signed In!</div>

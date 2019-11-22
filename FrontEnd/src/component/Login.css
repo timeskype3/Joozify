@@ -68,7 +68,6 @@ h3 {
   justify-content: center;
   background-color: #2f3536;
   height: calc(var(--vh, 1vh) * 100);
-  width: auto;
   overflow-x: hidden;
   overflow-y: hidden;
   position: relative;
@@ -93,6 +92,7 @@ h3 {
   position: relative;
   z-index: 2;
   margin-top: 30px;
+  margin-bottom: 30px;
   text-align: center;
   font-size: 20px;
   background: #3b5998;
@@ -130,7 +130,7 @@ h3 {
   border-top: 250px solid #125fd6;
   transform: rotate(0deg);
   top: 150px;
-  right: 490px;
+  right: 470px;
 }
 
 .Polygon-shadow {
@@ -140,5 +140,5 @@ h3 {
   border-top: 250px solid #02388b;
   transform: rotate(0deg);
   top: 150px;
-  right: 490px;
+  right: 470px;
 }

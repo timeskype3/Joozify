@@ -1,32 +1,69 @@
-import React from 'react';
+import React, { Component } from 'react';
 import 'antd/dist/antd.css';
-import { Icon } from 'antd';
 import './Main.css';
-import { Layout } from 'antd';
 
-const { Header, Footer, Sider, Content } = Layout;
+import { Layout, Menu, Icon } from 'antd';
 
-function Main() {
-  return (
-    <Layout>
-      <Sider>
-        <div className="Status">Playing</div>
-        <div className="Nav">
-          <Icon type="home" style={{ fontSize: '42px' }} />
-          <Icon type="play-square" />
-          <Icon type="folder" />
-        </div>
-        <div className="Divider" />
-      </Sider>
+const { Header, Content, Footer, Sider } = Layout;
+
+export default class Main extends Component {
+  render() {
+    return (
       <Layout>
-        <Header>Header</Header>
-        <Content>
-          <div className="Home" />
-        </Content>
-        <Footer>Footer</Footer>
+        <Sider
+          style={{
+            overflow: 'auto',
+            height: '100vh',
+            position: 'fixed',
+            left: 0
+          }}
+        >
+          <div className="logo" />
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+            <Menu.Item key="1">
+              <Icon type="user" />
+              <span className="nav-text">nav 1</span>
+            </Menu.Item>
+            <Menu.Item key="2">
+              <Icon type="video-camera" />
+              <span className="nav-text">nav 2</span>
+            </Menu.Item>
+            <Menu.Item key="3">
+              <Icon type="upload" />
+              <span className="nav-text">nav 3</span>
+            </Menu.Item>
+            <Menu.Item key="4">
+              <Icon type="bar-chart" />
+              <span className="nav-text">nav 4</span>
+            </Menu.Item>
+            <Menu.Item key="5">
+              <Icon type="cloud-o" />
+              <span className="nav-text">nav 5</span>
+            </Menu.Item>
+            <Menu.Item key="6">
+              <Icon type="appstore-o" />
+              <span className="nav-text">nav 6</span>
+            </Menu.Item>
+            <Menu.Item key="7">
+              <Icon type="team" />
+              <span className="nav-text">nav 7</span>
+            </Menu.Item>
+            <Menu.Item key="8">
+              <Icon type="shop" />
+              <span className="nav-text">nav 8</span>
+            </Menu.Item>
+          </Menu>
+        </Sider>
+        <Layout style={{ marginLeft: 200 }}>
+          <Header style={{ background: '#fff', padding: 0 }} />
+          <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
+            <div
+              style={{ padding: 24, background: '#fff', textAlign: 'center' }}
+            ></div>
+          </Content>
+          <Footer style={{ textAlign: 'center' }}></Footer>
+        </Layout>
       </Layout>
-    </Layout>
-  );
+    );
+  }
 }
-
-export default Main;
