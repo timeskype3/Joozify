@@ -36,9 +36,13 @@ export default class Login extends Component {
     return (
       <div className="Login">
         <div className="Ellipse" />
-        <p>Joozify.</p>
-        <p>A millions song that on your hand</p>
-
+        <div className="Titile">
+          <h1 className="Logo">Jooz</h1>
+          <h1 className="Logo-2">i</h1>
+          <h1 className="Logo">fy. </h1>
+          <h2>A millions songs </h2>
+          <h3>that on your hand</h3>
+        </div>
         <button onClick={this.onBtnLogin} className="Login-button">
           Log in
         </button>
@@ -57,7 +61,7 @@ export default class Login extends Component {
           <button className="Facebook-button">Log in via facebook</button>
         </Link>
         <div>
-          <Link style={navStyle} to="/home">
+          <Link style={navStyle} to="/main">
             <Button type="link">Sign Up</Button>
           </Link>
         </div>
