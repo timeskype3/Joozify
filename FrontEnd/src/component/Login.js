@@ -35,16 +35,7 @@ export default class Login extends Component {
     this.setState(prevState => {
       return {
         ...prevState,
-        showModal: false
-      };
-    });
-  };
-
-  //Should be change, this is too stupid function
-  onClose2 = () => {
-    this.setState(prevState => {
-      return {
-        ...prevState,
+        showModal: false,
         showModal2: false
       };
     });
@@ -77,7 +68,7 @@ export default class Login extends Component {
         <Modal
           title="SignUp"
           visible={this.state.showModal2}
-          onCancel={this.onClose2}
+          onCancel={this.onClose}
           footer={() => null}
         >
           <SignUpForm />
