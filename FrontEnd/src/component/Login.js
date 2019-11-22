@@ -56,7 +56,7 @@ export default class Login extends Component {
           <h2>A millions songs </h2>
           <h3>that on your hand</h3>
         </div>
-        <button onClick={this.onBtnLogin} className="Login-button">
+        <button id="1" onClick={this.onBtnLogin} className="Login-button">
           Log in
         </button>
 
@@ -84,7 +84,12 @@ export default class Login extends Component {
         </Link>
 
         <div>
-          <Button id="2" onClick={this.onBtnLogin} type="link">
+          <Button
+            id="2"
+            onClick={this.onBtnLogin}
+            className="SignUp-button"
+            type="link"
+          >
             SignUp
           </Button>
           <Link style={navStyle} to="/main">
