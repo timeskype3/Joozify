@@ -5,18 +5,29 @@ import { Link } from 'react-router-dom';
 
 import './Login.css';
 import LoginForm from './LoginForm';
+import SignUpForm from './SignUpForm';
 
 export default class Login extends Component {
   state = {
-    showModal: false
+    showModal: false,
+    showModal2: false
   };
 
-  onBtnLogin = () => {
+  onBtnLogin = e => {
+    const id = e.target.id;
+    // console.log('id', id)
+
     this.setState(prevState => {
-      return {
-        ...prevState,
-        showModal: true
+      let set = {
+        ...prevState
       };
+      if (id === '1') {
+        set = { ...set, showModal: true };
+      } else {
+        set = { ...set, showModal2: true };
+      }
+
+      return set;
     });
   };
 
@@ -29,17 +40,28 @@ export default class Login extends Component {
     });
   };
 
+  //Should be change, this is too stupid function
+  onClose2 = () => {
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        showModal2: false
+      };
+    });
+  };
+
   render() {
     const navStyle = {
       color: 'white'
     };
+
     return (
       <div className="Login">
         <div className="Ellipse" />
         <p>Joozify.</p>
         <p>A millions song that on your hand</p>
 
-        <button onClick={this.onBtnLogin} className="Login-button">
+        <button id="1" onClick={this.onBtnLogin} className="Login-button">
           Log in
         </button>
 
@@ -52,13 +74,27 @@ export default class Login extends Component {
           <LoginForm />
         </Modal>
 
+        <Modal
+          title="SignUp"
+          visible={this.state.showModal2}
+          onCancel={this.onClose2}
+          footer={() => null}
+        >
+          <SignUpForm />
+        </Modal>
+
         <br />
         <Link style={navStyle} to="/loginfb">
           <button className="Facebook-button">Log in via facebook</button>
         </Link>
+        <br />
+        <button id="2" onClick={this.onBtnLogin} className="SignUp-button">
+          SignUp
+        </button>
+
         <div>
           <Link style={navStyle} to="/home">
-            <Button type="link">Sign Up</Button>
+            <Button type="link">Home</Button>
           </Link>
         </div>
       </div>

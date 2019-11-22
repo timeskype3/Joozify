@@ -6,6 +6,7 @@ import LoginFB from './component/LoginFB';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './App.css';
+import SignUpForm from './component/SignUpForm';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" exact component={Login} />
             <Route path="/home" component={Home} />
             <Route path="/loginfb" component={LoginFB} />
+            <Route path="/signupform" component={SignUpForm} />
           </Switch>
         </header>
       </div>
