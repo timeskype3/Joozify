@@ -3,6 +3,7 @@ import 'antd/dist/antd.css';
 import './Main.css';
 
 import { Layout, Menu, Icon } from 'antd';
+import Player from './Player';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -61,7 +62,9 @@ export default class Main extends Component {
               style={{ padding: 24, background: '#fff', textAlign: 'center' }}
             ></div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}></Footer>
+          <Footer style={{ textAlign: 'center' }}>
+            <Player />
+          </Footer>
         </Layout>
       </Layout>
     );
