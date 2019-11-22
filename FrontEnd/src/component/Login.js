@@ -82,14 +82,13 @@ export default class Login extends Component {
         <Link style={navStyle} to="/loginfb">
           <button className="Facebook-button">Log in via facebook</button>
         </Link>
-        <br />
-        <button id="2" onClick={this.onBtnLogin} className="SignUp-button">
-          SignUp
-        </button>
 
         <div>
+          <Button id="2" onClick={this.onBtnLogin} type="link">
+            SignUp
+          </Button>
           <Link style={navStyle} to="/main">
-            <Button type="link">Sign Up</Button>
+            <Button type="link">Test Main</Button>
           </Link>
         </div>
       </div>
