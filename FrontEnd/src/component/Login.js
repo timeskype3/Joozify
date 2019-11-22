@@ -5,18 +5,29 @@ import { Link } from 'react-router-dom';
 
 import './Login.css';
 import LoginForm from './LoginForm';
+import SignUpForm from './SignUpForm';
 
 export default class Login extends Component {
   state = {
-    showModal: false
+    showModal: false,
+    showModal2: false
   };
 
-  onBtnLogin = () => {
+  onBtnLogin = e => {
+    const id = e.target.id;
+    // console.log('id', id)
+
     this.setState(prevState => {
-      return {
-        ...prevState,
-        showModal: true
+      let set = {
+        ...prevState
       };
+      if (id === '1') {
+        set = { ...set, showModal: true };
+      } else {
+        set = { ...set, showModal2: true };
+      }
+
+      return set;
     });
   };
 
@@ -24,7 +35,8 @@ export default class Login extends Component {
     this.setState(prevState => {
       return {
         ...prevState,
-        showModal: false
+        showModal: false,
+        showModal2: false
       };
     });
   };
@@ -33,6 +45,7 @@ export default class Login extends Component {
     const navStyle = {
       color: 'white'
     };
+
     return (
       <div className="Login">
         <div className="Ellipse" />
@@ -56,10 +69,24 @@ export default class Login extends Component {
           <LoginForm />
         </Modal>
 
+        <Modal
+          title="SignUp"
+          visible={this.state.showModal2}
+          onCancel={this.onClose}
+          footer={() => null}
+        >
+          <SignUpForm />
+        </Modal>
+
         <br />
         <Link style={navStyle} to="/loginfb">
           <button className="Facebook-button">Log in via facebook</button>
         </Link>
+        <br />
+        <button id="2" onClick={this.onBtnLogin} className="SignUp-button">
+          SignUp
+        </button>
+
         <div>
           <Link style={navStyle} to="/main">
             <Button type="link">Sign Up</Button>
