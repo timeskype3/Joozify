@@ -112,6 +112,11 @@ h3 {
   top: 601px;
   border-radius: 50%;
   background: #ff9500;
+  clip-path: circle(75%);
+  transition: clip-path 1s;
+}
+.Ellipse:hover {
+  clip-path: circle(25%);
 }
 
 .Rectangle {
@@ -121,6 +126,12 @@ h3 {
   bottom: 120px;
   right: -90px;
   background: #77fe0e;
+  clip-path: circle(75%);
+  transition: clip-path 1s;
+}
+
+.Rectangle:hover {
+  clip-path: circle(25%);
 }
 
 .Polygon {
