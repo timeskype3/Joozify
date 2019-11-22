@@ -27,12 +27,16 @@
 }
 
 .Logo {
+  position: relative;
+  z-index: 2;
   font-family: 'sf_pro_displayheavy';
   color: white;
   font-size: 100px;
   display: inline;
 }
 .Logo-2 {
+  position: relative;
+  z-index: 2;
   display: inline;
   font-size: 100px;
   color: #ffbe17;
@@ -40,6 +44,8 @@
 }
 
 h2 {
+  position: relative;
+  z-index: 2;
   font-family: 'sf_pro_displayregular';
   display: inline;
   color: white;
@@ -47,6 +53,8 @@ h2 {
 }
 
 h3 {
+  position: relative;
+  z-index: 2;
   font-family: 'sf_pro_displayregular';
   color: white;
   font-size: 80px;
@@ -58,9 +66,17 @@ h3 {
   text-align: center;
   align-items: center;
   justify-content: center;
+  background-color: #2f3536;
+  height: calc(var(--vh, 1vh) * 100);
+  width: auto;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
 }
 
 .Login-button {
+  position: relative;
+  z-index: 2;
   font-family: 'sf_pro_displayregular';
   text-align: center;
   font-size: 20px;
@@ -73,6 +89,9 @@ h3 {
   cursor: pointer;
 }
 .Facebook-button {
+  font-family: 'sf_pro_displayregular';
+  position: relative;
+  z-index: 2;
   margin-top: 30px;
   text-align: center;
   font-size: 20px;
@@ -98,20 +117,28 @@ h3 {
 .Rectangle {
   position: absolute;
   width: 335px;
-  height: 292px;
-  left: 936px;
-  top: 441px;
-
+  height: 400px;
+  bottom: 120px;
+  right: -90px;
   background: #77fe0e;
 }
 
 .Polygon {
   position: absolute;
-  width: 385.8px;
-  height: 262.01px;
-  left: 1076.6px;
-  top: 376.32px;
+  border-left: 200px solid transparent;
+  border-right: 200px solid transparent;
+  border-top: 250px solid #125fd6;
+  transform: rotate(0deg);
+  top: 150px;
+  right: 490px;
+}
 
-  background: #125fd6;
-  transform: rotate(-179.91deg);
+.Polygon-shadow {
+  position: absolute;
+  border-left: 0px solid transparent;
+  border-right: 200px solid transparent;
+  border-top: 250px solid #02388b;
+  transform: rotate(0deg);
+  top: 150px;
+  right: 490px;
 }

@@ -48,7 +48,6 @@ export default class Login extends Component {
 
     return (
       <div className="Login">
-        <div className="Ellipse" />
         <div className="Titile">
           <h1 className="Logo">Jooz</h1>
           <h1 className="Logo-2">i</h1>
@@ -95,6 +94,10 @@ export default class Login extends Component {
           <Link style={navStyle} to="/main">
             <Button type="link">Test Main</Button>
           </Link>
+          <div className="Ellipse" />
+          <div className="Rectangle" />
+          <div className="Polygon" />
+          <div className="Polygon-shadow" />
         </div>
       </div>
     );
