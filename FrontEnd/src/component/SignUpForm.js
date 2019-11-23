@@ -1,131 +1,236 @@
 import React from 'react';
-import auth from '../firebase';
+import firebase from '../firebase';
+import {
+  Form,
+  Input,
+  Tooltip,
+  Icon,
+  Cascader,
+  Select,
+  Row,
+  Col,
+  Checkbox,
+  Button,
+  AutoComplete
+} from 'antd';
 
-export default class SignUpForm extends React.Component {
-  componentDidMount() {
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        this.setState({
-          currentUser: user
-        });
+// let formMessage = firebase.database().ref('register');
+// const { Option } = Select;
+const AutoCompleteOption = AutoComplete.Option;
+
+// const residences = [
+//   {
+//     value: 'zhejiang',
+//     label: 'Zhejiang',
+//     children: [
+//       {
+//         value: 'hangzhou',
+//         label: 'Hangzhou',
+//         children: [
+//           {
+//             value: 'xihu',
+//             label: 'West Lake',
+//           },
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     value: 'jiangsu',
+//     label: 'Jiangsu',
+//     children: [
+//       {
+//         value: 'nanjing',
+//         label: 'Nanjing',
+//         children: [
+//           {
+//             value: 'zhonghuamen',
+//             label: 'Zhong Hua Men',
+//           },
+//         ],
+//       },
+//     ],
+//   },
+// ];
+
+class RegistrationForm extends React.Component {
+  state = {
+    confirmDirty: false,
+    autoCompleteResult: []
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.form.validateFieldsAndScroll((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values);
       }
     });
-  }
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      email: '',
-      password: '',
-      currentUser: null,
-      message: ''
-    };
-  }
-
-  onChange = e => {
-    const { name, value } = e.target;
-
-    this.setState({
-      [name]: value
-    });
   };
 
-  onSubmit = e => {
-    e.preventDefault();
-
-    const { email, password } = this.state;
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .then(response => {
-        this.setState({
-          currentUser: response.user
-        });
-      })
-      .catch(error => {
-        this.setState({
-          message: error.message
-        });
-      });
+  handleConfirmBlur = e => {
+    const { value } = e.target;
+    this.setState({ confirmDirty: this.state.confirmDirty || !!value });
   };
 
-  //   logout = e => {
-  //     e.preventDefault();
-  //     auth.signOut().then(response => {
-  //       this.setState({
-  //         currentUser: null
-  //       });
-  //     });
-  //   };
+  compareToFirstPassword = (rule, value, callback) => {
+    const { form } = this.props;
+    if (value && value !== form.getFieldValue('password')) {
+      callback('Two passwords that you enter is inconsistent!');
+    } else {
+      callback();
+    }
+  };
+
+  validateToNextPassword = (rule, value, callback) => {
+    const { form } = this.props;
+    if (value && this.state.confirmDirty) {
+      form.validateFields(['confirm'], { force: true });
+    }
+    callback();
+  };
+
+  handleWebsiteChange = value => {
+    let autoCompleteResult;
+    if (!value) {
+      autoCompleteResult = [];
+    } else {
+      autoCompleteResult = ['.com', '.org', '.net'].map(
+        domain => `${value}${domain}`
+      );
+    }
+    this.setState({ autoCompleteResult });
+  };
 
   render() {
-    const { message, currentUser } = this.state;
+    const { getFieldDecorator } = this.props.form;
+    const { autoCompleteResult } = this.state;
 
-    // if (currentUser) {
-    //   return (
-    //     <div>
-    //       <p> Hello {currentUser.email} </p>
-    //       <button onClick={this.logout}> Logout </button>
-    //     </div>
-    //   );
-    // }
+    const formItemLayout = {
+      labelCol: {
+        xs: { span: 24 },
+        sm: { span: 8 }
+      },
+      wrapperCol: {
+        xs: { span: 24 },
+        sm: { span: 16 }
+      }
+    };
+    const tailFormItemLayout = {
+      wrapperCol: {
+        xs: {
+          span: 24,
+          offset: 0
+        },
+        sm: {
+          span: 16,
+          offset: 8
+        }
+      }
+    };
+    // const prefixSelector = getFieldDecorator('prefix', {
+    //   initialValue: '86',
+    // })(
+    //   <Select style={{ width: 70 }}>
+    //     <Option value="86">+86</Option>
+    //     <Option value="87">+87</Option>
+    //   </Select>,
+    // );
+
+    const websiteOptions = autoCompleteResult.map(website => (
+      <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
+    ));
+
     return (
-      <form onSubmit={this.onSubmit}>
-        <div className="field">
-          <label className="label"> Email </label>
-          <div className="control">
-            <input
-              className="input"
-              type="email"
-              name="email"
-              onChange={this.onChange}
-              required
-            />
-          </div>
-        </div>
-        <div className="field">
-          <label className="label"> Password </label>
-          <div className="control">
-            <input
-              className="input"
-              type="password"
-              name="password"
-              onChange={this.onChange}
-              required
-            />
-          </div>
-        </div>
-        <div className="field">
-          <label className="label"> Confirm Password </label>
-          <div className="control">
-            <input
-              className="input"
-              type="password"
-              name="confirm_password"
-              onChange={this.onChange}
-              required
-            />
-          </div>
-        </div>
-        <div className="field">
-          <label className="label"> What should we call you? </label>
-          <div className="control">
-            <input
-              className="input"
-              type="firstName"
-              name="firstName"
-              onChange={this.onChange}
-              required
-            />
-          </div>
-        </div>
-        {message ? <p className="help is-danger"> {message} </p> : null}
-        <div className="field is-grouped">
-          <div className="control">
-            <button className="button is-link"> SignUp </button>
-          </div>
-        </div>
-      </form>
+      <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+        <Form.Item label="E-mail">
+          {getFieldDecorator('email', {
+            rules: [
+              {
+                type: 'email',
+                message: 'The input is not valid E-mail!'
+              },
+              {
+                required: true,
+                message: 'Please input your E-mail!'
+              }
+            ]
+          })(<Input />)}
+        </Form.Item>
+        <Form.Item label="Password" hasFeedback>
+          {getFieldDecorator('password', {
+            rules: [
+              {
+                required: true,
+                message: 'Please input your password!'
+              },
+              {
+                validator: this.validateToNextPassword
+              }
+            ]
+          })(<Input.Password />)}
+        </Form.Item>
+        <Form.Item label="Confirm Password" hasFeedback>
+          {getFieldDecorator('confirm', {
+            rules: [
+              {
+                required: true,
+                message: 'Please confirm your password!'
+              },
+              {
+                validator: this.compareToFirstPassword
+              }
+            ]
+          })(<Input.Password onBlur={this.handleConfirmBlur} />)}
+        </Form.Item>
+        <Form.Item
+          label={
+            <span>
+              Nickname&nbsp;
+              <Tooltip title="What do you want others to call you?">
+                <Icon type="question-circle-o" />
+              </Tooltip>
+            </span>
+          }
+        >
+          {getFieldDecorator('nickname', {
+            rules: [
+              {
+                required: true,
+                message: 'Please input your nickname!',
+                whitespace: true
+              }
+            ]
+          })(<Input />)}
+        </Form.Item>
+
+        <Form.Item label="Phone Number">
+          {getFieldDecorator('phone', {
+            rules: [
+              { required: true, message: 'Please input your phone number!' }
+            ]
+          })(<Input style={{ width: '100%' }} />)}
+        </Form.Item>
+
+        <Form.Item {...tailFormItemLayout}>
+          {getFieldDecorator('agreement', {
+            valuePropName: 'checked'
+          })(
+            <Checkbox>
+              I have read the <a href="">agreement</a>
+            </Checkbox>
+          )}
+        </Form.Item>
+        <Form.Item {...tailFormItemLayout}>
+          <Button type="primary" htmlType="submit">
+            Register
+          </Button>
+        </Form.Item>
+      </Form>
     );
   }
 }
+
+// const WrappedRegistrationForm = Form.create({ name: 'register' })(RegistrationForm);
+
+export default Form.create({ name: 'register' })(RegistrationForm);
