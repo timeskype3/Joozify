@@ -4,19 +4,19 @@ import DbConfig from '../firebase/index';
 import { Form, Input, Tooltip, Icon, Checkbox, Button } from 'antd';
 
 class RegistrationForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.onChange = this.onChange.bind(this);
-    this.onKeyup = this.onKeyup.bind(this);
-    this.state = {
-      message: ''
-    };
-  }
-  onChange(e) {
-    this.setState({
-      message: e.target.value
-    });
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.onChange = this.onChange.bind(this);
+  //   this.onKeyup = this.onKeyup.bind(this);
+  //   this.state = {
+  //     message: ''
+  //   };
+  // }
+  // onChange(e) {
+  //   this.setState({
+  //     message: e.target.value
+  //   });
+  // }
 
   state = {
     confirmDirty: false
