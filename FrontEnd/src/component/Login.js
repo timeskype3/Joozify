@@ -6,11 +6,13 @@ import { Link } from 'react-router-dom';
 import './Login.css';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
+import LoginFB from './LoginFB';
 
 export default class Login extends Component {
   state = {
     showModal: false,
-    showModal2: false
+    showModal2: false,
+    showModal3: false
   };
 
   onBtnLogin = e => {
@@ -23,8 +25,10 @@ export default class Login extends Component {
       };
       if (id === '1') {
         set = { ...set, showModal: true };
-      } else {
+      } else if (id === '2') {
         set = { ...set, showModal2: true };
+      } else {
+        set = { ...set, showModal3: true };
       }
 
       return set;
@@ -36,7 +40,8 @@ export default class Login extends Component {
       return {
         ...prevState,
         showModal: false,
-        showModal2: false
+        showModal2: false,
+        showModal3: false
       };
     });
   };
@@ -76,6 +81,16 @@ export default class Login extends Component {
         >
           <SignUpForm />
         </Modal>
+
+        <Modal
+          title="Log In via FB"
+          visible={this.state.showModal3}
+          onCancel={this.onClose}
+          footer={() => null}
+        >
+          <LoginFB />
+        </Modal>
+
         <button
           id="1"
           onClick={this.onBtnLogin}
@@ -85,9 +100,16 @@ export default class Login extends Component {
           Sign In
         </button>
         <br />
-        <Link style={navStyle} to="/loginfb">
-          <button className="Facebook-button">Sign In via facebook</button>
-        </Link>
+
+        <button
+          id="3"
+          onClick={this.onBtnLogin}
+          className="Facebook-button"
+          style={navStyle}
+        >
+          Sign In via facebook
+        </button>
+
         <br />
         <Button
           id="2"
