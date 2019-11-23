@@ -1,7 +1,11 @@
 import React from 'react';
-import firebase from '../firebase';
-import DbConfig from '../firebase/index';
+// import firebase from '../firebase';
+// import auth from '../firebase';
 import { Form, Input, Tooltip, Icon, Checkbox, Button } from 'antd';
+import firebase from '../firebase/index';
+
+const database = firebase.firestore;
+const users = database.collection('User');
 
 class RegistrationForm extends React.Component {
   // constructor(props) {
@@ -19,13 +23,29 @@ class RegistrationForm extends React.Component {
   // }
 
   state = {
-    confirmDirty: false
+    confirmDirty: false,
+    email: '',
+    password: '',
+    nickname: '',
+    phone: ''
   };
 
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
+        // console.log('form value',values)
+        const { email, password, nickname, phone } = values;
+        users
+          .add({
+            email,
+            password,
+            nickname,
+            phone
+          })
+          .then(docRef => {
+            console.log('save data laew naja');
+          });
         console.log('Received values of form: ', values);
       }
     });
@@ -54,6 +74,12 @@ class RegistrationForm extends React.Component {
   };
 
   render() {
+    // database.collection('User').get().then(snapshot => {
+    //   snapshot.forEach(doc => {
+    //     console.log('userjaaa',doc.id, doc.data())
+    //   })
+    // })
+
     const { getFieldDecorator } = this.props.form;
     const formItemLayout = {
       labelCol: {
@@ -77,7 +103,15 @@ class RegistrationForm extends React.Component {
         }
       }
     };
-
+    // firebase.auth().createUserWithEmailAndPassword(
+    //   values.email,
+    //   values.password
+    // ).then((resp) => {
+    //   return firestore.collection('userInfo').doc(resp.user.uid).set({
+    //     Nickname: values.Nickname,
+    //     Phone: values.Phone
+    //   })
+    // })
     return (
       <Form {...formItemLayout} onSubmit={this.handleSubmit}>
         <Form.Item label="E-mail">
@@ -151,7 +185,13 @@ class RegistrationForm extends React.Component {
 
         <Form.Item {...tailFormItemLayout}>
           {getFieldDecorator('agreement', {
-            valuePropName: 'checked'
+            valuePropName: 'checked',
+            rules: [
+              {
+                required: true,
+                message: 'Please check this box'
+              }
+            ]
           })(
             <Checkbox>
               I have read the <a href="/">agreement</a>
