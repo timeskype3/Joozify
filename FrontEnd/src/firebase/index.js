@@ -1,9 +1,21 @@
-import firebase from 'firebase/app'
-import 'firebase/auth'
-import config from './config'
+// import firebase from 'firebase/app'
+import firebase from 'firebase';
+import 'firebase/auth';
+import config from './config';
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(config)
-}
+// if (!firebase.apps.length) {
+//   firebase.initializeApp(config)
+// }
 
-export default firebase.auth()
+firebase.initializeApp(config);
+
+// export default firebase.auth()
+// export firebase.database()
+
+const database = firebase.database();
+// const auth = firebase.auth();
+const auth = firebase.auth;
+const firestore = firebase.firestore();
+const FacebookAuthProvider = new firebase.auth.FacebookAuthProvider();
+
+export default { database, auth, firestore, FacebookAuthProvider };
