@@ -60,7 +60,7 @@ export default class Login extends Component {
         </div>
 
         <Modal
-          title="Login"
+          title="Log In"
           visible={this.state.showModal}
           onCancel={this.onClose}
           footer={() => null}
@@ -69,7 +69,7 @@ export default class Login extends Component {
         </Modal>
 
         <Modal
-          title="SignUp"
+          title="Sign Up"
           visible={this.state.showModal2}
           onCancel={this.onClose}
           footer={() => null}
@@ -82,11 +82,11 @@ export default class Login extends Component {
           className="Login-button"
           style={navStyle}
         >
-          Sign in
+          Sign In
         </button>
         <br />
         <Link style={navStyle} to="/loginfb">
-          <button className="Facebook-button">Sign in via facebook</button>
+          <button className="Facebook-button">Sign In via facebook</button>
         </Link>
         <br />
         <Button

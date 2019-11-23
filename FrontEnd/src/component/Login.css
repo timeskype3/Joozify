@@ -86,6 +86,10 @@ h3 {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 50px;
   cursor: pointer;
+  border-color: transparent;
+}
+.Login-button:hover {
+  background: #f56f02;
 }
 
 .Facebook-button {
@@ -101,7 +105,11 @@ h3 {
   margin-left: -200px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 50px;
+  border-color: transparent;
   cursor: pointer;
+}
+.Facebook-button:hover {
+  background: #033399;
 }
 
 .Ellipse {
