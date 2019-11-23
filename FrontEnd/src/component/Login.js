@@ -2,17 +2,21 @@ import React, { Component } from 'react';
 import { Button, Modal } from 'antd';
 import 'antd/dist/antd.css';
 import { Link } from 'react-router-dom';
-
 import './Login.css';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
-import LoginFB from './LoginFB';
+import firebase from '../firebase';
+
+// const auth = firebase.authFacebook
+const fbProvider = firebase.FacebookAuthProvider;
+const auth = firebase.auth;
+
+// auth.signInWithPopup(firebase.auth.FacebookAuthProvider.PROVIDER_ID)
 
 export default class Login extends Component {
   state = {
     showModal: false,
-    showModal2: false,
-    showModal3: false
+    showModal2: false
   };
 
   onBtnLogin = e => {
@@ -27,8 +31,6 @@ export default class Login extends Component {
         set = { ...set, showModal: true };
       } else if (id === '2') {
         set = { ...set, showModal2: true };
-      } else {
-        set = { ...set, showModal3: true };
       }
 
       return set;
@@ -40,12 +42,22 @@ export default class Login extends Component {
       return {
         ...prevState,
         showModal: false,
-        showModal2: false,
-        showModal3: false
+        showModal2: false
       };
     });
   };
 
+  onFBClick = () => {
+    // auth().signInWithPopup(fbProvider).then(d => {
+    //   console.log('fb user', d.user)
+    // })
+    auth()
+      .signInWithPopup(fbProvider)
+      .then(d => {
+        console.log('fb user', d.user);
+        console.log('fb user', d.user.email);
+      });
+  };
   render() {
     const navStyle = {
       color: 'white'
@@ -82,15 +94,6 @@ export default class Login extends Component {
           <SignUpForm />
         </Modal>
 
-        <Modal
-          title="Log In via FB"
-          visible={this.state.showModal3}
-          onCancel={this.onClose}
-          footer={() => null}
-        >
-          <LoginFB />
-        </Modal>
-
         <button
           id="1"
           onClick={this.onBtnLogin}
@@ -102,8 +105,8 @@ export default class Login extends Component {
         <br />
 
         <button
-          id="3"
-          onClick={this.onBtnLogin}
+          // onClick={this.onBtnLogin}
+          onClick={this.onFBClick}
           className="Facebook-button"
           style={navStyle}
         >
