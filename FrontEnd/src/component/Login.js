@@ -54,15 +54,10 @@ export default class Login extends Component {
           <h1 className="Logo">fy. </h1>
           <h2>A millions songs </h2>
           <h3>that on your hand</h3>
+          <Link style={navStyle} to="/main">
+            <Button type="link">Test Main</Button>
+          </Link>
         </div>
-        <button
-          id="1"
-          onClick={this.onBtnLogin}
-          className="Login-button"
-          style={navStyle}
-        >
-          Log in
-        </button>
 
         <Modal
           title="Login"
@@ -81,29 +76,38 @@ export default class Login extends Component {
         >
           <SignUpForm />
         </Modal>
-
+        <button
+          id="1"
+          onClick={this.onBtnLogin}
+          className="Login-button"
+          style={navStyle}
+        >
+          Sign in
+        </button>
         <br />
         <Link style={navStyle} to="/loginfb">
-          <button className="Facebook-button">Log in via facebook</button>
+          <button className="Facebook-button">Sign in via facebook</button>
         </Link>
+        <br />
+        <Button
+          id="2"
+          onClick={this.onBtnLogin}
+          className="SignUp-button"
+          type="link"
+          style={{
+            position: 'absolute',
+            fontFamily: 'sf_pro_displayregular',
+            fontSize: '18px',
+            color: '#ffbe17',
+            zindex: '2',
+            bottom: '60px',
+            marginLeft: '-100px'
+          }}
+        >
+          Don't have an account?
+        </Button>
 
         <div>
-          <Button
-            id="2"
-            onClick={this.onBtnLogin}
-            className="SignUp-button"
-            type="link"
-            style={{
-              fontFamily: 'sf_pro_displayregular',
-              fontSize: '18px',
-              color: '#ffbe17'
-            }}
-          >
-            SignUp
-          </Button>
-          <Link style={navStyle} to="/main">
-            <Button type="link">Test Main</Button>
-          </Link>
           <div className="Ellipse" />
           <div className="Rectangle" />
           <div className="Polygon" />
