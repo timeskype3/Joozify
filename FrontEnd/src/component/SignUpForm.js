@@ -1,62 +1,25 @@
 import React from 'react';
 import firebase from '../firebase';
-import {
-  Form,
-  Input,
-  Tooltip,
-  Icon,
-  Cascader,
-  Select,
-  Row,
-  Col,
-  Checkbox,
-  Button,
-  AutoComplete
-} from 'antd';
-
-// let formMessage = firebase.database().ref('register');
-// const { Option } = Select;
-const AutoCompleteOption = AutoComplete.Option;
-
-// const residences = [
-//   {
-//     value: 'zhejiang',
-//     label: 'Zhejiang',
-//     children: [
-//       {
-//         value: 'hangzhou',
-//         label: 'Hangzhou',
-//         children: [
-//           {
-//             value: 'xihu',
-//             label: 'West Lake',
-//           },
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     value: 'jiangsu',
-//     label: 'Jiangsu',
-//     children: [
-//       {
-//         value: 'nanjing',
-//         label: 'Nanjing',
-//         children: [
-//           {
-//             value: 'zhonghuamen',
-//             label: 'Zhong Hua Men',
-//           },
-//         ],
-//       },
-//     ],
-//   },
-// ];
+import DbConfig from '../firebase/index';
+import { Form, Input, Tooltip, Icon, Checkbox, Button } from 'antd';
 
 class RegistrationForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onChange = this.onChange.bind(this);
+    this.onKeyup = this.onKeyup.bind(this);
+    this.state = {
+      message: ''
+    };
+  }
+  onChange(e) {
+    this.setState({
+      message: e.target.value
+    });
+  }
+
   state = {
-    confirmDirty: false,
-    autoCompleteResult: []
+    confirmDirty: false
   };
 
   handleSubmit = e => {
@@ -90,22 +53,8 @@ class RegistrationForm extends React.Component {
     callback();
   };
 
-  handleWebsiteChange = value => {
-    let autoCompleteResult;
-    if (!value) {
-      autoCompleteResult = [];
-    } else {
-      autoCompleteResult = ['.com', '.org', '.net'].map(
-        domain => `${value}${domain}`
-      );
-    }
-    this.setState({ autoCompleteResult });
-  };
-
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { autoCompleteResult } = this.state;
-
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -128,18 +77,6 @@ class RegistrationForm extends React.Component {
         }
       }
     };
-    // const prefixSelector = getFieldDecorator('prefix', {
-    //   initialValue: '86',
-    // })(
-    //   <Select style={{ width: 70 }}>
-    //     <Option value="86">+86</Option>
-    //     <Option value="87">+87</Option>
-    //   </Select>,
-    // );
-
-    const websiteOptions = autoCompleteResult.map(website => (
-      <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
-    ));
 
     return (
       <Form {...formItemLayout} onSubmit={this.handleSubmit}>
@@ -217,7 +154,7 @@ class RegistrationForm extends React.Component {
             valuePropName: 'checked'
           })(
             <Checkbox>
-              I have read the <a href="">agreement</a>
+              I have read the <a href="/">agreement</a>
             </Checkbox>
           )}
         </Form.Item>
@@ -230,7 +167,5 @@ class RegistrationForm extends React.Component {
     );
   }
 }
-
-// const WrappedRegistrationForm = Form.create({ name: 'register' })(RegistrationForm);
 
 export default Form.create({ name: 'register' })(RegistrationForm);
