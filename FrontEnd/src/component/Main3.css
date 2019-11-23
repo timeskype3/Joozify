@@ -1,0 +1,51 @@
+.Status {
+  position: absolute;
+  left: -0.18%;
+  right: 71.18%;
+  height: 120px;
+  width: 322.44px;
+  top: 0%;
+  bottom: 85.85%;
+  font-size: 34px;
+  line-height: 160px;
+  background: rgba(33, 33, 33, 0.72);
+
+  text-align: center;
+}
+.Home {
+  background-color: #2f3536;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.Nav {
+  position: absolute;
+  left: -0.18%;
+  bottom: 0%;
+  height: 70px;
+  width: 322.44px;
+  margin-bottom: 0px;
+
+  background: rgba(33, 33, 33, 0.72);
+}
+
+.Divider {
+  position: absolute;
+  margin-left: 322.44px;
+  top: 0%;
+  bottom: 0%;
+  height: auto;
+  width: 0.5px;
+
+  background: #8e8e93;
+}
+
+#components-layout-demo-fixed-sider .logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
