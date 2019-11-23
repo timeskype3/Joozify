@@ -82,11 +82,11 @@ export default class Login extends Component {
           className="Login-button"
           style={navStyle}
         >
-          Log in
+          Sign in
         </button>
         <br />
         <Link style={navStyle} to="/loginfb">
-          <button className="Facebook-button">Log in via facebook</button>
+          <button className="Facebook-button">Sign in via facebook</button>
         </Link>
         <br />
         <Button
@@ -100,11 +100,11 @@ export default class Login extends Component {
             fontSize: '18px',
             color: '#ffbe17',
             zindex: '2',
-            bottom: '80px',
-            marginLeft: '-40px'
+            bottom: '60px',
+            marginLeft: '-100px'
           }}
         >
-          SignUp
+          Don't have an account?
         </Button>
 
         <div>
