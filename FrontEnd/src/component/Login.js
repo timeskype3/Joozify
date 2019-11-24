@@ -48,9 +48,6 @@ export default class Login extends Component {
   };
 
   onFBClick = () => {
-    // auth().signInWithPopup(fbProvider).then(d => {
-    //   console.log('fb user', d.user)
-    // })
     auth()
       .signInWithPopup(fbProvider)
       .then(d => {
@@ -58,6 +55,7 @@ export default class Login extends Component {
         console.log('fb user', d.user.email);
       });
   };
+
   render() {
     const navStyle = {
       color: 'white'

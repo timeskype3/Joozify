@@ -36,6 +36,7 @@ class RegistrationForm extends React.Component {
       if (!err) {
         // console.log('form value',values)
         const { email, password, nickname, phone } = values;
+
         users
           .add({
             email,
@@ -74,11 +75,14 @@ class RegistrationForm extends React.Component {
   };
 
   render() {
-    // database.collection('User').get().then(snapshot => {
-    //   snapshot.forEach(doc => {
-    //     console.log('userjaaa',doc.id, doc.data())
-    //   })
-    // })
+    database
+      .collection('User')
+      .get()
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          console.log('userjaaa', doc.id, doc.data());
+        });
+      });
 
     const { getFieldDecorator } = this.props.form;
     const formItemLayout = {
