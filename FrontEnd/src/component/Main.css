@@ -1,3 +1,32 @@
+h1 {
+  position: relative;
+  z-index: 2;
+  font-family: 'sf_pro_displayregular';
+  color: white;
+  font-size: 22px;
+  display: inline;
+  margin-left: 10px;
+}
+
+.Titile-menu {
+  position: relative;
+  z-index: 1;
+  font-family: 'sf_pro_displayregular';
+  color: #8e8e93;
+  font-size: 27px;
+  margin-left: 10px;
+}
+
+.Titile-submenu {
+  position: relative;
+  z-index: 1;
+  font-family: 'sf_pro_displayheavy';
+  color: #9f9fa8;
+  line-height: 160%;
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
 .Background {
   height: 100vh;
   display: flex;
@@ -15,15 +44,15 @@
   height: 120px;
   width: 320px;
   top: 0%;
-  bottom: 85.85%;
   background: rgba(33, 33, 33, 0.72);
 }
 
 .Nav {
   position: absolute;
-  height: 70px;
-  width: 320px;
-  bottom: 0%;
+  height: 100px;
+  width: 1000vh;
+  bottom: -1%;
+  z-index: 3;
   background: #252727;
 }
 
@@ -38,14 +67,14 @@
 }
 
 .Side {
-  position: absolute;
+  position: relative;
   top: 120px;
-  left: 0px;
 }
 
 .Side-Account {
   position: relative;
-  top: 220px;
+  top: 90px;
+  left: 10px;
 }
 
 .SideSearch {
@@ -54,13 +83,26 @@
   left: 150px;
 }
 
+.FixedHeightContainer {
+  position: absolute;
+  top: 170px;
+  float: right;
+  width: 320px;
+}
+
+.Categories {
+  height: 45vh;
+  overflow: auto;
+  color: #000;
+}
+
 .searchBox {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, 50%);
   background: #2f3640;
-  height: 40px;
+  height: 60px;
   border-radius: 40px;
   padding: 10px;
 }
@@ -99,26 +141,4 @@
   transition: 0.4s;
   line-height: 40px;
   width: 0px;
-}
-
-@media screen and (max-width: 620px) {
-  .searchBox:hover > .searchInput {
-    width: 150px;
-    padding: 0 6px;
-  }
-}
-
-.FixedHeightContainer {
-  position: absolute;
-  top: 200px;
-  float: right;
-  width: 320px;
-  padding: 3px;
-}
-
-.Categories {
-  font-size: 50px;
-  height: 450px;
-  overflow: auto;
-  color: #000;
 }
