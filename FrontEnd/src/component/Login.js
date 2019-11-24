@@ -7,11 +7,8 @@ import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 import firebase from '../firebase';
 
-// const auth = firebase.authFacebook
 const fbProvider = firebase.FacebookAuthProvider;
 const auth = firebase.auth;
-
-// auth.signInWithPopup(firebase.auth.FacebookAuthProvider.PROVIDER_ID)
 
 export default class Login extends Component {
   state = {
@@ -21,8 +18,6 @@ export default class Login extends Component {
 
   onBtnLogin = e => {
     const id = e.target.id;
-    // console.log('id', id)
-
     this.setState(prevState => {
       let set = {
         ...prevState
@@ -103,7 +98,6 @@ export default class Login extends Component {
         <br />
 
         <button
-          // onClick={this.onBtnLogin}
           onClick={this.onFBClick}
           className="Facebook-button"
           style={navStyle}

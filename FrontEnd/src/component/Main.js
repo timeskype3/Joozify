@@ -2,9 +2,24 @@ import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import './Main.css';
 import { Avatar, Icon } from 'antd';
+import firebase from '../firebase/index';
+
+const auth = firebase.auth();
+// const currentUser = firebase.auth().currentUser ;
 
 export default class Main extends Component {
+  componentDidMount() {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.setState({
+          currentUser: user
+        });
+      }
+    });
+  }
+
   render() {
+    // console.log('currentUser: ', currentUser);
     const elements = [
       'Software Engineering',
       'Operating Systems',
@@ -15,7 +30,7 @@ export default class Main extends Component {
       'Quantum programming',
       'Big Data'
     ];
-
+    // console.log("Hello", currentUser.email);
     const playlists = [];
 
     for (const [index, value] of elements.entries()) {

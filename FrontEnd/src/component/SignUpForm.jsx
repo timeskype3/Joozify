@@ -1,6 +1,4 @@
 import React from 'react';
-// import firebase from '../firebase';
-// import auth from '../firebase';
 import { Form, Input, Tooltip, Icon, Checkbox, Button } from 'antd';
 import firebase from '../firebase/index';
 

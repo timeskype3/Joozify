@@ -1,5 +1,6 @@
 import React from 'react';
 import firebase from '../firebase/index';
+import './Login.css';
 
 // const database = firebase.firestore;
 // const users = database.collection('User');
@@ -42,7 +43,6 @@ class LoginForm extends React.Component {
     auth
       .signInWithEmailAndPassword(email, password)
       .then(response => {
-        console.log('response: ', response);
         this.setState({
           currentUser: response.user
         });
@@ -64,9 +64,12 @@ class LoginForm extends React.Component {
   };
 
   render() {
+    // const navStyle = {
+    //   color: 'white'
+    // };
     const { message, currentUser } = this.state;
     if (currentUser) {
-      console.log(currentUser.uid);
+      // console.log(currentUser.uid);
       return (
         <div>
           <p> Hello {currentUser.email} </p>
