@@ -8,20 +8,6 @@ const database = firebase.firestore;
 const users = database.collection('User');
 
 class RegistrationForm extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.onChange = this.onChange.bind(this);
-  //   this.onKeyup = this.onKeyup.bind(this);
-  //   this.state = {
-  //     message: ''
-  //   };
-  // }
-  // onChange(e) {
-  //   this.setState({
-  //     message: e.target.value
-  //   });
-  // }
-
   state = {
     confirmDirty: false,
     email: '',
@@ -34,20 +20,33 @@ class RegistrationForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        // console.log('form value',values)
         const { email, password, nickname, phone } = values;
-
-        users
-          .add({
-            email,
-            password,
-            nickname,
-            phone
+        //Create user in Authentication
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(values.email, values.password)
+          .then(response => {
+            // Get user uid from authentication to named the doc and create userInfo in database
+            // console.log("response: ", response);
+            const userUID = response.user.uid;
+            // console.log("UID: ", userUID);
+            // Create userInfo in database
+            users
+              .doc(userUID)
+              .set({
+                email,
+                password,
+                nickname,
+                phone
+              })
+              .then(docRef => {
+                console.log('Create userInfo completed');
+              });
           })
-          .then(docRef => {
-            console.log('save data laew naja');
+          .catch(function(error) {
+            console.log('Create error, err: ', error.code);
           });
-        console.log('Received values of form: ', values);
+        // console.log('Received values of form: ', values);
       }
     });
   };
@@ -75,14 +74,16 @@ class RegistrationForm extends React.Component {
   };
 
   render() {
-    database
-      .collection('User')
-      .get()
-      .then(snapshot => {
-        snapshot.forEach(doc => {
-          console.log('userjaaa', doc.id, doc.data());
-        });
-      });
+    // Show all user in database
+
+    // database
+    //   .collection('User')
+    //   .get()
+    //   .then(snapshot => {
+    //     snapshot.forEach(doc => {
+    //       console.log('userjaaa', doc.id, doc.data());
+    //     });
+    //   });
 
     const { getFieldDecorator } = this.props.form;
     const formItemLayout = {
@@ -107,15 +108,7 @@ class RegistrationForm extends React.Component {
         }
       }
     };
-    // firebase.auth().createUserWithEmailAndPassword(
-    //   values.email,
-    //   values.password
-    // ).then((resp) => {
-    //   return firestore.collection('userInfo').doc(resp.user.uid).set({
-    //     Nickname: values.Nickname,
-    //     Phone: values.Phone
-    //   })
-    // })
+
     return (
       <Form {...formItemLayout} onSubmit={this.handleSubmit}>
         <Form.Item label="E-mail">

@@ -1,6 +1,8 @@
 import React from 'react';
-import firebase from '../firebase';
+import firebase from '../firebase/index';
 
+// const database = firebase.firestore;
+// const users = database.collection('User');
 const auth = firebase.auth();
 
 class LoginForm extends React.Component {
@@ -40,6 +42,7 @@ class LoginForm extends React.Component {
     auth
       .signInWithEmailAndPassword(email, password)
       .then(response => {
+        console.log('response: ', response);
         this.setState({
           currentUser: response.user
         });
@@ -63,6 +66,7 @@ class LoginForm extends React.Component {
   render() {
     const { message, currentUser } = this.state;
     if (currentUser) {
+      console.log(currentUser.uid);
       return (
         <div>
           <p> Hello {currentUser.email} </p>
