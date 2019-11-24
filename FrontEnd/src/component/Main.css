@@ -1,4 +1,4 @@
-h1 {
+.Background .Side .Side-Account h1 {
   position: relative;
   z-index: 2;
   font-family: 'sf_pro_displayregular';
@@ -8,7 +8,7 @@ h1 {
   margin-left: 10px;
 }
 
-.Titile-menu {
+.Background .Side .Categories .Titile-menu {
   position: relative;
   z-index: 1;
   font-family: 'sf_pro_displayregular';
@@ -17,7 +17,7 @@ h1 {
   margin-left: 10px;
 }
 
-.Titile-submenu {
+.Categories .Titile-submenu {
   position: relative;
   z-index: 1;
   font-family: 'sf_pro_displayheavy';
@@ -29,17 +29,13 @@ h1 {
 }
 .Background {
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  font-size: calc(10px + 2vmin);
   color: white;
   background: #2f3536;
-  overflow-x: hidden;
-  overflow-y: hidden;
   position: relative;
+  overflow: hidden;
 }
 
-.Status {
+.Background .Status {
   position: absolute;
   height: 120px;
   width: 320px;
@@ -47,16 +43,16 @@ h1 {
   background: rgba(33, 33, 33, 0.72);
 }
 
-.Nav {
+.Background .Nav {
   position: absolute;
   height: 100px;
   width: 1000vh;
-  bottom: -1%;
+  bottom: 0%;
   z-index: 3;
   background: #252727;
 }
 
-.Divider {
+.Background .Divider {
   position: absolute;
   width: 0.5px;
   height: 100vh;
@@ -66,7 +62,7 @@ h1 {
   background: #8e8e93;
 }
 
-.Side {
+.Background .Side {
   position: relative;
   top: 120px;
 }
@@ -96,49 +92,16 @@ h1 {
   color: #000;
 }
 
-.searchBox {
+.FixedHeightScrollContainer {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 50%);
-  background: #2f3640;
-  height: 60px;
-  border-radius: 40px;
-  padding: 10px;
-}
-
-.searchBox:hover > .searchInput {
-  width: 240px;
-  padding: 0 6px;
-}
-
-.searchBox:hover > .searchButton {
-  background: white;
-  color: #2f3640;
-}
-
-.searchButton {
-  color: white;
+  top: 150px;
+  left: 350px;
   float: right;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #2f3640;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.4s;
+  width: 80%;
+  z-index: 0;
 }
 
-.searchInput {
-  border: none;
-  background: none;
-  outline: none;
-  float: left;
-  padding: 0;
-  color: white;
-  font-size: 16px;
-  transition: 0.4s;
-  line-height: 40px;
-  width: 0px;
+.Scroll {
+  height: 70vh;
+  overflow-y: auto;
 }

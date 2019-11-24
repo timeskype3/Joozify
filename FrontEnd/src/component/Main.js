@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
+import { Avatar, Icon } from 'antd';
+
+//CSS
+import './src/assets/css/normalize.css';
+import './src/assets/css/carousel.css';
+import './src/assets/css/styles.css';
 import 'antd/dist/antd.css';
 import './Main.css';
-import { Avatar, Icon } from 'antd';
+
+import Scroll from './src/Scroll';
 
 export default class Main extends Component {
   render() {
@@ -31,6 +38,13 @@ export default class Main extends Component {
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet"
         />
+        <div className="Content">
+          <div className="FixedHeightScrollContainer">
+            <div class="Scroll">
+              <Scroll />
+            </div>
+          </div>
+        </div>
         <div className="Side">
           <div className="SideSearch"></div>
           <div className="Side-Account">
@@ -85,17 +99,6 @@ export default class Main extends Component {
                 New Playlist
               </div>
             </div>
-          </div>
-          <div class="searchBox">
-            <input
-              class="searchInput"
-              type="text"
-              name=""
-              placeholder="Search"
-            />
-            <button class="searchButton" href="#">
-              <i class="material-icons">search</i>
-            </button>
           </div>
         </div>
         <div className="Status" />
