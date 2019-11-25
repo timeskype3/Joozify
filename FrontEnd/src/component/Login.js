@@ -59,9 +59,9 @@ export default class Login extends Component {
     return (
       <div className="Login">
         <div className="Titile">
-          <h className="Logo">Jooz</h>
-          <h className="Logo-2">i</h>
-          <h className="Logo">fy. </h>
+          <h1 className="Logo">Jooz</h1>
+          <h1 className="Logo-2">i</h1>
+          <h1 className="Logo">fy. </h1>
           <h2>A millions songs </h2>
           <h3>that on your hand</h3>
           <Link style={navStyle} to="/main">
