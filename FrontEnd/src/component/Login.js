@@ -73,7 +73,7 @@ export default class Login extends Component {
           title="Log In"
           visible={this.state.showModal}
           onCancel={this.onClose}
-          footer={() => null}
+          footer={null}
         >
           <LoginForm />
         </Modal>
@@ -82,7 +82,7 @@ export default class Login extends Component {
           title="Sign Up"
           visible={this.state.showModal2}
           onCancel={this.onClose}
-          footer={() => null}
+          footer={null}
         >
           <SignUpForm />
         </Modal>
