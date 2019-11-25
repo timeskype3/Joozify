@@ -26,7 +26,7 @@ export default class Main extends Component {
 
   render() {
     const currentUser = firebase.auth().currentUser || {};
-    console.log('currentUser: ', currentUser.email);
+    // console.log('currentUser: ', currentUser.email);
     const elements = [
       'Software Engineering',
       'Operating Systems',
@@ -54,7 +54,7 @@ export default class Main extends Component {
         />
         <div className="Content">
           <div className="FixedHeightScrollContainer">
-            <div class="Scroll">
+            <div className="Scroll">
               <Scroll />
             </div>
           </div>
@@ -63,12 +63,12 @@ export default class Main extends Component {
           <div className="SideSearch"></div>
           <div className="Side-Account">
             <Avatar size={64} icon="user" />
-            <h1>{currentUser.displayName}</h1>
+            <h1>{currentUser.displayName} </h1>
             <button onClick={this.logout}> Logout </button>
           </div>
-          <div class="FixedHeightContainer">
-            <div class="Categories">
-              <h className="Titile-menu">YOUR LIBRARY </h>
+          <div className="FixedHeightContainer">
+            <div className="Categories">
+              <h1 className="Titile-menu">YOUR LIBRARY </h1>
               <Icon
                 type="appstore"
                 theme="filled"
@@ -80,7 +80,7 @@ export default class Main extends Component {
               <div className="Titile-submenu">Albums</div>
               <div className="Titile-submenu">Artists</div>
               <br />
-              <h className="Titile-menu">PLAYLISTS</h>
+              <h1 className="Titile-menu">PLAYLISTS</h1>
               <br />
               <div className="Titile-submenu">{playlists}</div>
             </div>
