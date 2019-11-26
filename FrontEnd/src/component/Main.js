@@ -53,7 +53,7 @@ export default class Main extends Component {
           </div>
           <div class="FixedHeightContainer">
             <div class="Categories">
-              <h className="Titile-menu">YOUR LIBRARY </h>
+              <h className="Titile-menu title-red">YOUR LIBRARY </h>
               <Icon
                 type="appstore"
                 theme="filled"
@@ -65,7 +65,7 @@ export default class Main extends Component {
               <div className="Titile-submenu">Albums</div>
               <div className="Titile-submenu">Artists</div>
               <br />
-              <h className="Titile-menu">PLAYLISTS</h>
+              <h className="Titile-menu title-green">PLAYLISTS</h>
               <br />
               <div className="Titile-submenu">{playlists}</div>
             </div>

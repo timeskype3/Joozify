@@ -22,7 +22,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 15px;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: hidden;
   height: 100vh;
 }
 body .container {
@@ -167,6 +167,7 @@ body .carousel-item .title-info .up-down i:hover {
   /* IE10+/Edge */
   user-select: none;
   /* Standard */
+  padding: 0;
 }
 .movie-container .movie-sections .sections {
   margin: 25px 0 40px;

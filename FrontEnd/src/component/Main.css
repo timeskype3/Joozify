@@ -1,5 +1,4 @@
 .Background .Side .Side-Account h1 {
-  position: relative;
   z-index: 2;
   font-family: 'sf_pro_displayregular';
   color: white;
@@ -9,16 +8,14 @@
 }
 
 .Background .Side .Categories .Titile-menu {
-  position: relative;
   z-index: 1;
   font-family: 'sf_pro_displayregular';
-  color: #8e8e93;
+  color: #9f9fa8;
   font-size: 27px;
   margin-left: 10px;
 }
 
 .Categories .Titile-submenu {
-  position: relative;
   z-index: 1;
   font-family: 'sf_pro_displayheavy';
   color: #9f9fa8;
@@ -27,9 +24,10 @@
   margin-left: 10px;
   cursor: pointer;
 }
+
 .Background {
   height: 100vh;
-  color: white;
+
   background: #2f3536;
   position: relative;
   overflow: hidden;
@@ -89,7 +87,6 @@
 .Categories {
   height: 45vh;
   overflow: auto;
-  color: #000;
 }
 
 .FixedHeightScrollContainer {
@@ -102,6 +99,6 @@
 }
 
 .Scroll {
-  height: 70vh;
+  height: 100vh;
   overflow-y: auto;
 }
