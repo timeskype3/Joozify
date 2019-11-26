@@ -1,6 +1,4 @@
 import React from 'react';
-// import firebase from '../firebase';
-// import auth from '../firebase';
 import { Form, Input, Tooltip, Icon, Checkbox, Button } from 'antd';
 import firebase from '../firebase/index';
 
@@ -31,6 +29,13 @@ class RegistrationForm extends React.Component {
             const userUID = response.user.uid;
             // console.log("UID: ", userUID);
             // Create userInfo in database
+            response.user
+              .updateProfile({
+                displayName: nickname
+              })
+              .catch(err => {
+                console.error(err);
+              });
             users
               .doc(userUID)
               .set({
@@ -41,6 +46,9 @@ class RegistrationForm extends React.Component {
               })
               .then(docRef => {
                 console.log('Create userInfo completed');
+              })
+              .catch(err => {
+                console.error(err);
               });
           })
           .catch(function(error) {

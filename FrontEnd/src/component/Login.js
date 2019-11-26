@@ -7,11 +7,8 @@ import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 import firebase from '../firebase';
 
-// const auth = firebase.authFacebook
 const fbProvider = firebase.FacebookAuthProvider;
 const auth = firebase.auth;
-
-// auth.signInWithPopup(firebase.auth.FacebookAuthProvider.PROVIDER_ID)
 
 export default class Login extends Component {
   state = {
@@ -21,8 +18,6 @@ export default class Login extends Component {
 
   onBtnLogin = e => {
     const id = e.target.id;
-    // console.log('id', id)
-
     this.setState(prevState => {
       let set = {
         ...prevState
@@ -64,9 +59,9 @@ export default class Login extends Component {
     return (
       <div className="Login">
         <div className="Titile">
-          <h className="Logo">Jooz</h>
-          <h className="Logo-2">i</h>
-          <h className="Logo">fy. </h>
+          <h1 className="Logo">Jooz</h1>
+          <h1 className="Logo-2">i</h1>
+          <h1 className="Logo">fy. </h1>
           <h2>A millions songs </h2>
           <h3>that on your hand</h3>
           <Link style={navStyle} to="/main">
@@ -78,7 +73,7 @@ export default class Login extends Component {
           title="Log In"
           visible={this.state.showModal}
           onCancel={this.onClose}
-          footer={() => null}
+          footer={null}
         >
           <LoginForm />
         </Modal>
@@ -87,7 +82,7 @@ export default class Login extends Component {
           title="Sign Up"
           visible={this.state.showModal2}
           onCancel={this.onClose}
-          footer={() => null}
+          footer={null}
         >
           <SignUpForm />
         </Modal>
@@ -103,7 +98,6 @@ export default class Login extends Component {
         <br />
 
         <button
-          // onClick={this.onBtnLogin}
           onClick={this.onFBClick}
           className="Facebook-button"
           style={navStyle}
