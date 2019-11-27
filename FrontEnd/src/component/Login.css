@@ -43,7 +43,7 @@
   font-family: 'sf_pro_displayheavy';
 }
 
-h2 {
+.SubLogo {
   position: relative;
   z-index: 2;
   font-family: 'sf_pro_displayregular';
@@ -52,7 +52,7 @@ h2 {
   font-size: 80px;
 }
 
-h3 {
+.SubLogo2 {
   position: relative;
   z-index: 2;
   font-family: 'sf_pro_displayregular';
