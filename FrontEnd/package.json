@@ -48,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "@version/react-router-v3": "^1.0.0",
     "eslint-config-prettier": "^6.6.0",
     "eslint-config-react-app": "^5.0.2",
     "eslint-plugin-prettier": "^3.1.1",

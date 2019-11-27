@@ -17,8 +17,8 @@ class Scroll extends React.Component {
       <Router>
         <div className="main">
           <div className="container">
-            <Route path="/" exact component={Homepage} />
-            <Route path="/main/music/:movieId" exact component={Movie} />
+            <Route path="/" component={Homepage} />
+            <Route path="/music/:movieId" component={Movie} />
           </div>
         </div>
       </Router>
