@@ -14,6 +14,7 @@ import 'antd/dist/antd.css';
 import Login from './component/Login';
 import Main from './component/Main';
 import SignUpForm from './component/SignUpForm';
+import Store from './component/Store';
 
 class App extends Component {
   state = {
@@ -63,6 +64,7 @@ class App extends Component {
         <Route path="/" exact component={Login} />
         <Route path="/main" exact component={Main} />
         <Route path="/signupform" exact component={SignUpForm} />
+        <Route path="/store" exact component={Store} />
       </Switch>
     );
   }

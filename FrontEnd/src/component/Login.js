@@ -67,6 +67,9 @@ export default class Login extends Component {
           <Link style={navStyle} to="/main">
             <Button type="link">Test Main</Button>
           </Link>
+          <Link style={navStyle} to="/store">
+            <Button type="link">Test Store</Button>
+          </Link>
         </div>
 
         <Modal
