@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './Store.css';
-import firebase from 'firebase';
-import config from '../firebase/config';
+import firebase from '../firebase/index';
 import 'bulma/css/bulma.css';
 import { FilePond, File, registerPlugin } from 'react-filepond';
 import 'filepond/dist/filepond.min.css';
-
 import FilePondImagePreview from 'filepond-plugin-image-preview';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 registerPlugin(FilePondImagePreview);
+
+const storage = firebase.storage();
 
 class Store extends Component {
   constructor(props) {
@@ -19,17 +19,6 @@ class Store extends Component {
       filesMetadata: [], //ใช้เพื่อรับข้อมูล Metadata จาก Firebase
       rows: [] //ใช้วาด DataTable
     };
-
-    // Initialize Firebase
-    // var config = {
-    //   apiKey: "",
-    //   authDomain: "",
-    //   databaseURL: "",
-    //   projectId: "",
-    //   storageBucket: "",
-    //   messagingSenderId: ""
-    // };
-    firebase.initializeApp(config);
   }
   handleInit() {
     // handle init file upload here
@@ -42,7 +31,8 @@ class Store extends Component {
     console.log(file);
 
     const fileUpload = file;
-    const storageRef = firebase.storage().ref(`filepond/${file.name}`);
+    //const storage = firebase.storage();
+    const storageRef = storage.ref(`filepond/${file.name}`);
     const task = storageRef.put(fileUpload);
 
     task.on(
@@ -80,7 +70,7 @@ class Store extends Component {
           {/* Pass FilePond properties as attributes */}
           <FilePond
             allowMultiple={true}
-            maxFiles={3}
+            maxFiles={300}
             ref={ref => (this.pond = ref)}
             server={{ process: this.handleProcessing.bind(this) }}
             oninit={() => this.handleInit()}
