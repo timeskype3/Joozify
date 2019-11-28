@@ -15,6 +15,8 @@ import Login from './component/Login';
 import Main from './component/Main';
 import SignUpForm from './component/SignUpForm';
 import Store from './component/Store';
+import Admin from './component/Admin';
+import Upload from './component/Upload';
 
 class App extends Component {
   state = {
@@ -65,6 +67,8 @@ class App extends Component {
         <Route path="/main" exact component={Main} />
         <Route path="/signupform" exact component={SignUpForm} />
         <Route path="/store" exact component={Store} />
+        <Route path="/admin" exact component={Admin} />
+        <Route path="/upload" exact component={Upload} />
       </Switch>
     );
   }
