@@ -13,6 +13,7 @@ registerPlugin(FilePondImagePreview);
 class Store extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       files: [], //ใช้เก็บข้อมูล File ที่ Upload
       uploadValue: 0, //ใช้เพื่อดู Process การ Upload
@@ -56,8 +57,8 @@ class Store extends Component {
         //Success
         console.log('success-ja ');
         this.setState({
-          messag: `Upload Success`
-          // picture: task.snapshot.downloadURL //เผื่อนำไปใช้ต่อในการแสดงรูปที่ Upload ไป
+          messag: `Upload Success`,
+          picture: task.snapshot.downloadURL //เผื่อนำไปใช้ต่อในการแสดงรูปที่ Upload ไป
         });
 
         //Get metadata
@@ -78,9 +79,9 @@ class Store extends Component {
             databaseRef.push({ metadataFile });
           })
           .catch(function(error) {
-            this.setState({
-              messag: `Upload error : ${error.message}`
-            });
+            //   this.setState({
+            //     messag: `Upload error : ${error.message}`
+            //   })
           });
       }
     );
