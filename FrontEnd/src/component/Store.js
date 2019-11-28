@@ -54,9 +54,10 @@ class Store extends Component {
       },
       () => {
         //Success
+        console.log('success-ja ');
         this.setState({
-          messag: `Upload Success`,
-          picture: task.snapshot.downloadURL //เผื่อนำไปใช้ต่อในการแสดงรูปที่ Upload ไป
+          messag: `Upload Success`
+          // picture: task.snapshot.downloadURL //เผื่อนำไปใช้ต่อในการแสดงรูปที่ Upload ไป
         });
 
         //Get metadata
