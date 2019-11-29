@@ -71,6 +71,9 @@ export default class Login extends Component {
             <Button type="link">Test Store</Button>
           </Link>
         </div>
+        <Link style={navStyle} to="/admin">
+          <Button type="link">Admin</Button>
+        </Link>
 
         <Modal
           title="Log In"
@@ -89,7 +92,7 @@ export default class Login extends Component {
         >
           <SignUpForm />
         </Modal>
-
+        <br />
         <button
           id="1"
           onClick={this.onBtnLogin}
