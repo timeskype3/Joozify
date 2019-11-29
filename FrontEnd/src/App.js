@@ -8,6 +8,7 @@ import 'antd/dist/antd.css';
 import Login from './component/Login';
 import Main from './component/Main';
 import SignUpForm from './component/SignUpForm';
+import Admin from './component/Admin';
 
 export default class App extends Component {
   constructor(props) {
@@ -31,6 +32,7 @@ export default class App extends Component {
               <Route path="/" exact component={Main} />
               <Route path="/main" component={Main} />
               <Route path="/signupform" component={SignUpForm} />
+              <Route path="/admin" component={Admin} />
             </Switch>
           </div>
         </Router>
@@ -44,6 +46,7 @@ export default class App extends Component {
               <Route path="/" exact component={Login} />
               <Route path="/main" component={Main} />
               <Route path="/signupform" component={SignUpForm} />
+              <Route path="/admin" component={Admin} />
             </Switch>
           </div>
         </Router>

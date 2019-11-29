@@ -59,18 +59,35 @@ export default class Login extends Component {
     return (
       <div className="Login">
         <div className="Titile">
-          <h1 className="Logo">Jooz</h1>
-          <h1 className="Logo-2">i</h1>
-          <h1 className="Logo">fy. </h1>
-          <h2>A millions songs </h2>
-          <h3>that on your hand</h3>
-          <Link style={navStyle} to="/main">
-            <Button type="link">Test Main</Button>
+          <br />
+          <h1 className="Logo">Ad</h1>
+          <h1 className="Logo-2">m</h1>
+          <h1 className="Logo">in </h1>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <Link style={navStyle} to="/">
+            <Button type="link">back to login</Button>
           </Link>
         </div>
-        <Link style={navStyle} to="/admin">
-          <Button type="link">Admin</Button>
-        </Link>
 
         <Modal
           title="Log In"
@@ -89,14 +106,14 @@ export default class Login extends Component {
         >
           <SignUpForm />
         </Modal>
-        <br />
+
         <button
           id="1"
           onClick={this.onBtnLogin}
           className="Login-button"
           style={navStyle}
         >
-          Sign In
+          Upload song
         </button>
         <br />
 
@@ -105,27 +122,10 @@ export default class Login extends Component {
           className="Facebook-button"
           style={navStyle}
         >
-          Sign In via facebook
+          Delete song
         </button>
 
         <br />
-        <Button
-          id="2"
-          onClick={this.onBtnLogin}
-          className="SignUp-button"
-          type="link"
-          style={{
-            position: 'absolute',
-            fontFamily: 'sf_pro_displayregular',
-            fontSize: '18px',
-            color: '#ffbe17',
-            zindex: '2',
-            bottom: '60px',
-            marginLeft: '-100px'
-          }}
-        >
-          Don't have an account?
-        </Button>
 
         <div>
           <div className="Ellipse" />
