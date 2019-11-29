@@ -1,11 +1,11 @@
 import React from 'react';
 import Grid from './Grid';
 
-class Watch extends React.Component {
+class Made extends React.Component {
   render() {
     return (
-      <div className="sections watch-it-again">
-        <p className="title">Watch It Again</p>
+      <div className="sections made-for-you">
+        <p className="title">Made for you</p>
         <div className="grid">
           {Object.keys(this.props.movies)
             .reverse()
@@ -20,4 +20,4 @@ class Watch extends React.Component {
   }
 }
 
-export default Watch;
+export default Made;

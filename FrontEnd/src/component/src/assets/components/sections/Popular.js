@@ -5,7 +5,7 @@ class Popular extends React.Component {
   render() {
     return (
       <div className="sections popular">
-        <p className="title">Popular on Netflix</p>
+        <p className="title">Popular on Joozify</p>
         <div className="grid">
           {Object.keys(this.props.movies)
             .reverse()

@@ -10,6 +10,7 @@ import './Main.css';
 
 import Scroll from './src/Scroll';
 import firebase from '../firebase/index';
+import Player from './Player';
 
 const auth = firebase.auth();
 
@@ -38,7 +39,10 @@ export default class Main extends Component {
       'Big Data'
     ];
     const playlists = [];
-
+    const icon = {
+      fontSize: '26px',
+      color: '#8e8e93'
+    };
     for (const [index, value] of elements.entries()) {
       playlists.push(
         <div key={index}>
@@ -64,16 +68,14 @@ export default class Main extends Component {
           <div className="Side-Account">
             <Avatar size={64} icon="user" />
             <h1>{currentUser.displayName}</h1>
-            <button onClick={this.logout}> Logout </button>
+            <h1>
+              <Icon type="logout" style={icon} onClick={this.logout} />
+            </h1>
           </div>
           <div className="FixedHeightContainer">
             <div className="Categories">
               <h1 className="Titile-menu">YOUR LIBRARY </h1>
-              <Icon
-                type="appstore"
-                theme="filled"
-                style={{ fontSize: '22px', color: '#8e8e93' }}
-              />
+              <Icon type="appstore" theme="filled" style={icon} />
               <div className="Titile-submenu">Made For You</div>
               <div className="Titile-submenu">Recently Playing</div>
               <div className="Titile-submenu">Liked Songs</div>
@@ -117,8 +119,15 @@ export default class Main extends Component {
           </div>
         </div>
         <div className="Status" />
-        <div className="Nav" />
+        <div>
+          <Player />
+        </div>
         <div className="Divider" />
+        <div className="BackgroundLogo LogoMain">
+          <div className="Logo "> Jooz</div>
+          <div className="Logo-2 ">i</div>
+          <div className="Logo ">fy </div>
+        </div>
       </div>
     );
   }

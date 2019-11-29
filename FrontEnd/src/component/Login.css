@@ -31,14 +31,15 @@
   z-index: 2;
   font-family: 'sf_pro_displayheavy';
   color: white;
-  font-size: 100px;
   display: inline;
+}
+.LogoSize {
+  font-size: 100px;
 }
 .Logo-2 {
   position: relative;
   z-index: 2;
   display: inline;
-  font-size: 100px;
   color: #ffbe17;
   font-family: 'sf_pro_displayheavy';
 }

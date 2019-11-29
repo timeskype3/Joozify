@@ -2,7 +2,7 @@ import React from 'react';
 import Trending from './Trending';
 import Popular from './Popular';
 import NewReleases from './NewReleases';
-import Watch from './Watch';
+import Made from './Made';
 import movies from '../../../movies';
 import { moveBack } from '../../../Helpers';
 import { moveForward } from '../../../Helpers';
@@ -24,7 +24,7 @@ class Sections extends React.Component {
     const trending = 'trending';
     const popular = 'popular';
     const newReleases = 'new-releases';
-    const watchAgain = 'watch-it-again';
+    const madeforyou = 'made-for-you';
     return (
       <div className="movie-container">
         <div className="movie-sections">
@@ -64,15 +64,17 @@ class Sections extends React.Component {
           <div className="section">
             <i
               className="fa fa-chevron-left back-arrow"
-              onClick={e => this.sendBack(watchAgain)}
+              onClick={e => this.sendBack(madeforyou)}
             />
             <i
               className="fa fa-chevron-right forward-arrow"
-              onClick={e => this.sendForward(watchAgain)}
+              onClick={e => this.sendForward(madeforyou)}
             />
-            <Watch movies={this.state.movies} />
+            <Made movies={this.state.movies} />
           </div>
         </div>
+        <br />
+        <br />
       </div>
     );
   }
