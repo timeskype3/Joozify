@@ -14,26 +14,6 @@ let options = {
   ],
   audioLists: [
     {
-      name: 'my boy',
-      singer: 'Billie Eilish',
-      cover:
-        'https://firebasestorage.googleapis.com/v0/b/joozify.appspot.com/o/filepond%2F2019-11-30_04-39-21?alt=media&token=b1f6d6a4-ebe3-4496-abe3-e905dc22d2ad',
-      musicSrc:
-        'https://firebasestorage.googleapis.com/v0/b/joozify.appspot.com/o/filepond%2Fmy%20boy.mp3?alt=media&token=9f66d00b-fd6d-4d42-8af6-931bbfbf3172'
-      //   lyric
-    },
-    {
-      name: 'Heart Shaker',
-      singer: 'TWICE',
-      cover:
-        'https://firebasestorage.googleapis.com/v0/b/joozify.appspot.com/o/filepond%2F207b8d7853b259bc3d2c58c2a7eb9b38.jpg?alt=media&token=bc00763d-4c87-41d6-8797-bfffcc8445a3',
-      musicSrc: () => {
-        return Promise.resolve(
-          'https://firebasestorage.googleapis.com/v0/b/joozify.appspot.com/o/filepond%2FTWICE%20_Heart%20Shaker_%20M_V.mp3?alt=media&token=2d74dfa8-76f5-44a8-ab5d-af25da33b5c3'
-        );
-      }
-    },
-    {
       name: 'Bedtime Stories',
       singer: 'Jay Chou',
       cover:
@@ -128,9 +108,6 @@ class PlayerTime extends Component {
           onAudioPlay={this.changestatusplay}
           onAudioPause={this.changestatuspause}
         />
-        <button onClick={this.onAddAudio}>
-          + add audio ({params.audioLists.length})
-        </button>
       </div>
     );
   }

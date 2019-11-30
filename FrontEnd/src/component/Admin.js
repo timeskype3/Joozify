@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Modal, Layout, Icon, Button } from 'antd';
+import { Modal, Layout, Icon } from 'antd';
 import Upload from './Upload';
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Footer, Content } = Layout;
 
 export default class Admin extends Component {
   state = {
@@ -12,7 +12,6 @@ export default class Admin extends Component {
   };
 
   onBtnUpload = e => {
-    const id = e.target.id;
     this.setState(prevState => {
       let set = {
         ...prevState

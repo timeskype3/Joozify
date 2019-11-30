@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Avatar, Icon } from 'antd';
+import { Avatar, Icon, Input } from 'antd';
 
 //CSS
 import './src/assets/css/normalize.css';
@@ -13,6 +13,8 @@ import firebase from '../firebase/index';
 import Player from './Player';
 
 const auth = firebase.auth();
+
+const { Search } = Input;
 
 export default class Main extends Component {
   logout = e => {
@@ -65,7 +67,13 @@ export default class Main extends Component {
         </div>
 
         <div className="Side">
-          <div className="SideSearch"></div>
+          <div className="SideSearch">
+            <Search
+              placeholder="Search"
+              onSearch={value => console.log(value)}
+              style={{ width: 270 }}
+            />
+          </div>
           <div className="Side-Account">
             <Avatar size={64} icon="user" />
             <h1>{currentUser.displayName}</h1>

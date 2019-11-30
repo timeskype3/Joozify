@@ -97,8 +97,7 @@
 
 .SideSearch {
   position: absolute;
-  top: 0px;
-  left: 150px;
+  padding: 25px;
 }
 
 .FixedHeightContainer {
