@@ -59,9 +59,9 @@ export default class Login extends Component {
     return (
       <div className="Login">
         <div className="Titile">
-          <h1 className="Logo">Jooz</h1>
-          <h1 className="Logo-2">i</h1>
-          <h1 className="Logo">fy. </h1>
+          <div className="Logo LogoSize">Jooz</div>
+          <div className="Logo-2 LogoSize">i</div>
+          <div className="Logo LogoSize">fy. </div>
           <h2 className="SubLogo">A millions songs </h2>
           <h3 className="SubLogo2">that on your hand</h3>
           {/* <Link style={navStyle} to="/main">
@@ -71,6 +71,9 @@ export default class Login extends Component {
             <Button type="link">Test Store</Button>
           </Link> */}
         </div>
+        <Link style={navStyle} to="/admin">
+          <Button type="link">Admin</Button>
+        </Link>
 
         <Modal
           title="Log In"
@@ -89,7 +92,7 @@ export default class Login extends Component {
         >
           <SignUpForm />
         </Modal>
-
+        <br />
         <button
           id="1"
           onClick={this.onBtnLogin}

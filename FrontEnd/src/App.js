@@ -13,7 +13,6 @@ import 'antd/dist/antd.css';
 //Component
 import Login from './component/Login';
 import Main from './component/Main';
-import SignUpForm from './component/SignUpForm';
 import Store from './component/Store';
 import Admin from './component/Admin';
 import Upload from './component/Upload';
@@ -64,11 +63,10 @@ class App extends Component {
     return (
       <Switch>
         <Route path="/" exact component={Login} />
-        <Route path="/main" exact component={Main} />
-        <Route path="/signupform" exact component={SignUpForm} />
-        <Route path="/store" exact component={Store} />
-        <Route path="/admin" exact component={Admin} />
-        <Route path="/upload" exact component={Upload} />
+        <Route path="/main" component={Main} />
+        <Route path="/store" component={Store} />
+        <Route path="/admin" component={Admin} />
+        <Route path="/upload" component={Upload} />
       </Switch>
     );
   }

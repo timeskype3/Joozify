@@ -40,7 +40,7 @@ export default class Admin extends Component {
           <Header>
             <h1 className="Logo">Jooz</h1>
             <h1 className="Logo-2">i</h1>
-            <h1 className="Logo">fy. </h1>
+            <h1 className="Logo">fy </h1>
           </Header>
           <Content>
             <Icon

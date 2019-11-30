@@ -5,7 +5,7 @@ class Trending extends React.Component {
   render() {
     return (
       <div className="sections trending">
-        <p className="title">Trending Now</p>
+        <p className="title">Recently played</p>
         <div className="grid">
           {Object.keys(this.props.movies).map(key => {
             return (
