@@ -150,4 +150,4 @@ class Upload extends Component {
   }
 }
 
-export default Upload;
+export default Form.create({ name: 'Image' })(Upload);
