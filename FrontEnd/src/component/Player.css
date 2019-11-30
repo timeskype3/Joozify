@@ -1,3 +1,12 @@
 .PlayerLogoSize {
   font-size: 30px;
 }
+
+.audioname {
+  position: absolute;
+  font-size: 20px;
+  margin-left: 10px;
+  display: inline-block;
+  width: 200px;
+  color: #9f9fa8;
+}
