@@ -12,7 +12,7 @@ class Third extends React.Component {
         <div className="movie-image" style={stargate}></div>
         <div className="title-info">
           <h2>Stargate Universe</h2>
-          <h3>99% Match 2009-2011 2 Seasons</h3>
+          <div className="Record">99% Match 2009-2011 2 Seasons</div>
           <p className="overview">
             Trapped on an Ancient spaceship billions of light-years from home, a
             group of soldiers and civilians struggle to survive and find their

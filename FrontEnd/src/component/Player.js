@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 
 import ReactJkMusicPlayer from 'react-jinke-music-player';
 import 'react-jinke-music-player/assets/index.css';
@@ -66,12 +65,12 @@ const options = {
   defaultPosition: {
     top: 300,
     right: 70
+  },
+  onAudioPlay(audioInfo) {
+    console.log('audio playing', audioInfo);
   }
 };
 export default class PlayerTime extends Component {
-  constructor(props) {
-    super(props);
-  }
   state = {
     params: options
   };
@@ -80,6 +79,10 @@ export default class PlayerTime extends Component {
     const { params } = this.state;
     return (
       <div>
+        <div className="Status">
+          <div className="StatusTitile">Playing</div>
+          <div>Kill This Love - Blackpink</div>
+        </div>
         <ReactJkMusicPlayer {...params} />
       </div>
     );

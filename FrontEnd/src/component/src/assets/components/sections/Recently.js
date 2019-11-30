@@ -1,10 +1,10 @@
 import React from 'react';
 import Grid from './Grid';
 
-class Trending extends React.Component {
+class Recently extends React.Component {
   render() {
     return (
-      <div className="sections trending">
+      <div className="sections recently">
         <p className="title">Recently played</p>
         <div className="grid">
           {Object.keys(this.props.movies).map(key => {
@@ -18,4 +18,4 @@ class Trending extends React.Component {
   }
 }
 
-export default Trending;
+export default Recently;
