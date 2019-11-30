@@ -56,13 +56,13 @@ class App extends Component {
     // }
     // console.log('If Current user: ', currentUser);
     return (
-      <Switch>
+      <React.Fragment>
         <Route path="/" exact component={Login} />
         <Route path="/main" component={Main} />
         <Route path="/store" component={Store} />
         <Route path="/admin" component={Admin} />
         <Route path="/upload" component={Upload} />
-      </Switch>
+      </React.Fragment>
     );
   }
 }

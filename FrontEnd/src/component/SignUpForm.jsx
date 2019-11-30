@@ -11,7 +11,8 @@ class RegistrationForm extends React.Component {
     email: '',
     password: '',
     nickname: '',
-    phone: ''
+    phone: '',
+    role: ''
   };
 
   handleSubmit = e => {
@@ -19,6 +20,7 @@ class RegistrationForm extends React.Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         const { email, password, nickname, phone } = values;
+        const role = 'normaluser';
         //Create user in Authentication
         firebase
           .auth()
@@ -42,7 +44,8 @@ class RegistrationForm extends React.Component {
                 email,
                 password,
                 nickname,
-                phone
+                phone,
+                role
               })
               .then(docRef => {
                 console.log('Create userInfo completed');
