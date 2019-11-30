@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../firebase/index';
-import { Form } from 'antd';
+import { Form, Button } from 'antd';
 
 class Upload extends Component {
   constructor(props) {
@@ -94,7 +94,7 @@ class Upload extends Component {
     };
 
     return (
-      <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+      <Form {...formItemLayout} onSubmit={this.handleUpload}>
         <Form.Item label="Image">
           {/* {getFieldDecorator('email', {
             rules: [
@@ -139,9 +139,15 @@ class Upload extends Component {
         <Form.Item label="Mp3">
           <input />
         </Form.Item>
+
+        <Form.Item {...tailFormItemLayout}>
+          <Button tpye="primary" htmlType="submit">
+            Upload
+          </Button>
+        </Form.Item>
       </Form>
     );
   }
 }
 
-export default Form.create({ name: 'Image' })(Upload);
+export default Upload;
