@@ -53,7 +53,7 @@ export default class Admin extends Component {
             </Link>
 
             <Modal
-              title="Log In"
+              title="Upload New Music"
               visible={this.state.showModal}
               onCancel={this.onClose}
               footer={null}

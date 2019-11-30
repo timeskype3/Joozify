@@ -79,9 +79,9 @@ class Store extends Component {
             databaseRef.push({ metadataFile });
           })
           .catch(function(error) {
-            //   this.setState({
-            //     messag: `Upload error : ${error.message}`
-            //   })
+            this.setState({
+              messag: `Upload error : ${error.message}`
+            });
           });
       }
     );

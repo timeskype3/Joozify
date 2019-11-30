@@ -64,12 +64,12 @@ export default class Login extends Component {
           <h1 className="Logo">fy. </h1>
           <h2 className="SubLogo">A millions songs </h2>
           <h3 className="SubLogo2">that on your hand</h3>
-          <Link style={navStyle} to="/main">
+          {/* <Link style={navStyle} to="/main">
             <Button type="link">Test Main</Button>
           </Link>
           <Link style={navStyle} to="/store">
             <Button type="link">Test Store</Button>
-          </Link>
+          </Link> */}
         </div>
 
         <Modal
