@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Modal, Layout, Icon, Button } from 'antd';
 import Upload from './Upload';
-import { FaBeer } from 'react-icons/fa';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -39,9 +38,9 @@ export default class Admin extends Component {
       <div>
         <Layout>
           <Header>
-            <h1 className="Logo">Jooz</h1>
-            <h1 className="Logo-2">i</h1>
-            <h1 className="Logo">fy </h1>
+            <h1 className="Logo LogoSize">Jooz</h1>
+            <h1 className="Logo-2 LogoSize">i</h1>
+            <h1 className="Logo LogoSize ">fy </h1>
           </Header>
           <Content>
             <Icon type="user" style={{ fontSize: '120px', color: '#8e8e93' }} />
