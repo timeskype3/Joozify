@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 
 import ReactJkMusicPlayer from 'react-jinke-music-player';
 import 'react-jinke-music-player/assets/index.css';
-
+import { Icon } from 'antd';
 //CSS
 import './Player.css';
 
-const options = {
+let options = {
   extendsContent: [
     <div className="Logo PlayerLogoSize"> Jooz</div>,
     <div className="Logo-2 PlayerLogoSize">i</div>,
@@ -65,26 +65,55 @@ const options = {
   defaultPosition: {
     top: 300,
     right: 70
-  },
-  onAudioPlay(audioInfo) {
-    console.log('audio playing', audioInfo);
   }
 };
-export default class PlayerTime extends Component {
+class PlayerTime extends Component {
+  constructor(props) {
+    super(props);
+    this.changestatusplay = this.changestatusplay.bind(this);
+    this.changestatuspause = this.changestatuspause.bind(this);
+  }
   state = {
-    params: options
+    params: options,
+    status: 'Pause',
+    name: '',
+    icon: 'pause'
   };
+
+  changestatusplay(audioInfo) {
+    this.setState({
+      name: audioInfo.name,
+      status: 'Playing',
+      icon: 'customer-service'
+    });
+  }
+
+  changestatuspause(audioInfo) {
+    this.setState({ status: 'Pause', icon: 'pause' });
+  }
 
   render() {
     const { params } = this.state;
     return (
       <div>
         <div className="Status">
-          <div className="StatusTitile">Playing</div>
-          <div>Kill This Love - Blackpink</div>
+          <div className="StatusTitile">{this.state.status}</div>
+          <Icon
+            type={this.state.icon}
+            style={{ color: '#ff9500', fontSize: '20px' }}
+          />
+          <div className="audioname">
+            <marquee scrollamount="3">{this.state.name}</marquee>
+          </div>
         </div>
-        <ReactJkMusicPlayer {...params} />
+        <ReactJkMusicPlayer
+          {...params}
+          onAudioPlay={this.changestatusplay}
+          onAudioPause={this.changestatuspause}
+        />
       </div>
     );
   }
 }
+
+export default PlayerTime;
