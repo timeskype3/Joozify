@@ -74,7 +74,7 @@ body .carousel-item .title-info h2 {
   font-family: 'Roboto', sans-serif !important;
   margin-bottom: 5px;
 }
-body .carousel-item .title-info h3 {
+body .carousel-item .title-info .Album {
   font-size: 1em;
   margin-bottom: 25px;
 }
@@ -186,8 +186,8 @@ body .carousel-item .title-info .up-down i:hover {
   transition: 0.3s transform, 0.3s -webkit-transform;
 }
 .movie-container .movie-sections .sections .grid:hover {
-  -webkit-transform: translate3d(-120px, 0, 0);
-  transform: translate3d(-120px, 0, 0);
+  -webkit-transform: translate3d(-20px, 0, 0);
+  transform: translate3d(-20px, 0, 0);
 }
 .movie-container .movie-sections .sections .grid .grid-item {
   position: relative;
@@ -196,7 +196,7 @@ body .carousel-item .title-info .up-down i:hover {
   cursor: pointer;
   padding: 5px;
   overflow: hidden;
-  width: 280px;
+  width: 160px;
   height: 160px;
   transition: 0.3s -webkit-transform;
   transition: 0.3s transform;

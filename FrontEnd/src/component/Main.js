@@ -63,6 +63,7 @@ export default class Main extends Component {
             </div>
           </div>
         </div>
+
         <div className="Side">
           <div className="SideSearch"></div>
           <div className="Side-Account">
@@ -118,7 +119,6 @@ export default class Main extends Component {
             </div>
           </div>
         </div>
-        <div className="Status" />
         <div>
           <Player />
         </div>

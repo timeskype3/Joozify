@@ -12,7 +12,7 @@ class Second extends React.Component {
         <div className="movie-image" style={stepbrothers}></div>
         <div className="title-info">
           <h2>Step Brothers</h2>
-          <h3>92% Match 2008 R</h3>
+          <div className="Record">92% Match 2008 R</div>
           <p className="overview">
             Brennan and Dale might be grown men, but that doesn't stop a
             childish sibling rivalry from erupting after Brennan's mom marries

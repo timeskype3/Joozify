@@ -13,7 +13,7 @@ class MovieCarousel extends React.Component {
         infiniteLoop={true}
         autoPlay={true}
         showStatus={false}
-        interval={5000}
+        interval={50000}
         transitionTime={700}
       >
         <First />

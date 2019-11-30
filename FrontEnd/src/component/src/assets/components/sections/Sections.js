@@ -1,5 +1,5 @@
 import React from 'react';
-import Trending from './Trending';
+import Recently from './Recently';
 import Popular from './Popular';
 import NewReleases from './NewReleases';
 import Made from './Made';
@@ -21,7 +21,7 @@ class Sections extends React.Component {
   };
 
   render() {
-    const trending = 'trending';
+    const recently = 'recently';
     const popular = 'popular';
     const newReleases = 'new-releases';
     const madeforyou = 'made-for-you';
@@ -31,13 +31,13 @@ class Sections extends React.Component {
           <div className="section">
             <i
               className="fa fa-chevron-left back-arrow"
-              onClick={e => this.sendBack(trending)}
+              onClick={e => this.sendBack(recently)}
             />
             <i
               className="fa fa-chevron-right forward-arrow"
-              onClick={e => this.sendForward(trending)}
+              onClick={e => this.sendForward(recently)}
             />
-            <Trending movies={this.state.movies} />
+            <Recently movies={this.state.movies} />
           </div>
           <div className="section">
             <i

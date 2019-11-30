@@ -15,7 +15,7 @@ export function moveBack(c) {
 
 export function moveForward(c) {
   const gridLength = $('.' + c + ' .grid .grid-item').length - 3;
-  const width = gridLength * (280 + 4);
+  const width = gridLength * (160 + 4);
   const divWidth = -width;
   let margin = parseInt($('.' + c + ' .grid').css('margin-left'));
 
