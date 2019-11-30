@@ -70,10 +70,10 @@ export default class Login extends Component {
           <Link style={navStyle} to="/store">
             <Button type="link">Test Store</Button>
           </Link>
+          <Link style={navStyle} to="/admin">
+            <Button type="link">Admin</Button>
+          </Link>
         </div>
-        <Link style={navStyle} to="/admin">
-          <Button type="link">Admin</Button>
-        </Link>
 
         <Modal
           title="Log In"
