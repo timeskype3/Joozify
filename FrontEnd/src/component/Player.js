@@ -79,6 +79,23 @@ class PlayerTime extends Component {
     name: '',
     icon: 'pause'
   };
+  onAddAudio = () => {
+    const data = {
+      ...this.state.params,
+      audioLists: [
+        ...this.state.params.audioLists,
+        {
+          name: "I'm new here",
+          singer: 'jack',
+          cover: 'http://www.lijinke.cn/music/1387583682387727.jpg',
+          musicSrc: `http://www.lijinke.cn/music/${Date.now()}.mp3`
+        }
+      ]
+    };
+    this.setState({
+      params: data
+    });
+  };
 
   changestatusplay(audioInfo) {
     this.setState({
@@ -111,6 +128,9 @@ class PlayerTime extends Component {
           onAudioPlay={this.changestatusplay}
           onAudioPause={this.changestatuspause}
         />
+        <button onClick={this.onAddAudio}>
+          + add audio ({params.audioLists.length})
+        </button>
       </div>
     );
   }

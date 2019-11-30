@@ -24,22 +24,3 @@ export function moveForward(c) {
     $('.' + c + ' .grid').animate({ marginLeft: [margin, 'swing'] }, 100);
   }
 }
-
-export function plan(c) {
-  if (c === 'basic') {
-    $('.plan-item .items p').css('color', '#a6a6a6');
-    $('.box').css('background', '#EF6B72');
-    $('.box1').css('background', '#e50914');
-    $('.plan-item .items p.basic').css('color', '#e50914');
-  } else if (c === 'standard') {
-    $('.plan-item .items p').css('color', '#a6a6a6');
-    $('.box').css('background', '#EF6B72');
-    $('.box2').css('background', '#e50914');
-    $('.plan-item .items p.standard').css('color', '#e50914');
-  } else if (c === 'premium') {
-    $('.plan-item .items p').css('color', '#a6a6a6');
-    $('.box').css('background', '#EF6B72');
-    $('.box3').css('background', '#e50914');
-    $('.plan-item .items p.premium').css('color', '#e50914');
-  }
-}
