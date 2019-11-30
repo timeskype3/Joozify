@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Modal, Layout, Icon, Button } from 'antd';
 import Upload from './Upload';
+import { FaBeer } from 'react-icons/fa';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -43,13 +44,35 @@ export default class Admin extends Component {
             <h1 className="Logo">fy </h1>
           </Header>
           <Content>
+            <Icon type="user" style={{ fontSize: '120px', color: '#8e8e93' }} />
+
+            <Link style={navStyle} onClick={this.onBtnUpload}>
+              <br />
+              <h1 className="Adminp">US</h1>
+              <h1 className="Adminp2">E</h1>
+              <h1 className="Adminp">R </h1>
+            </Link>
+
             <Icon
               type="to-top"
               style={{ fontSize: '120px', color: '#8e8e93' }}
             />
 
             <Link style={navStyle} onClick={this.onBtnUpload}>
-              UPLOAD
+              <br />
+              <h1 className="Adminp">UPL</h1>
+              <h1 className="Adminp2">O</h1>
+              <h1 className="Adminp">AD </h1>
+            </Link>
+            <Icon
+              type="delete"
+              style={{ fontSize: '120px', color: '#8e8e93' }}
+            />
+            <Link style={navStyle} onClick={this.onBtnUpload}>
+              <br />
+              <h1 className="Adminp">DEL</h1>
+              <h1 className="Adminp2">E</h1>
+              <h1 className="Adminp">TE</h1>
             </Link>
 
             <Modal

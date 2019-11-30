@@ -43,6 +43,22 @@
   color: #ffbe17;
   font-family: 'sf_pro_displayheavy';
 }
+.Adminp {
+  position: relative;
+  z-index: 2;
+  font-family: 'sf_pro_displayheavy';
+  color: white;
+  font-size: 40px;
+  display: inline;
+}
+.Adminp2 {
+  position: relative;
+  z-index: 2;
+  display: inline;
+  font-size: 40px;
+  color: #ffbe17;
+  font-family: 'sf_pro_displayheavy';
+}
 
 .SubLogo {
   position: relative;
