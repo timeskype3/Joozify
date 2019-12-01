@@ -18,18 +18,20 @@ export default class Delete extends Component {
       [name]: value
     });
   };
-  //   onSubmit = e => {
-  //     e.preventDefault();
-  //     song
-  //       .doc(songname)
-  //       .delete()
-  //       .then(function() {
-  //         console.log('Document successfully deleted!');
-  //       })
-  //       .catch(function(error) {
-  //         console.error('Error removing document: ', error);
-  //       });
-  //   };
+  onSubmit = e => {
+    e.preventDefault();
+    const songname = this.state;
+    console.log('Song: ', songname);
+    //   song
+    //     .doc(songname)
+    //     .delete()
+    //     .then(function() {
+    //       console.log('Document successfully deleted!');
+    //     })
+    //     .catch(function(error) {
+    //       console.error('Error removing document: ', error);
+    //     });
+  };
 
   render() {
     return (
