@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Modal, Layout, Icon, Button } from 'antd';
-import Upload from './Upload';
+import UploadForm from './Upload';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -12,7 +12,7 @@ export default class Admin extends Component {
   };
 
   onBtnUpload = e => {
-    const id = e.target.id;
+    const { id } = e.target;
     this.setState(prevState => {
       let set = {
         ...prevState
@@ -30,6 +30,7 @@ export default class Admin extends Component {
       };
     });
   };
+
   render() {
     const navStyle = {
       color: 'white'
@@ -58,10 +59,10 @@ export default class Admin extends Component {
               onCancel={this.onClose}
               footer={null}
             >
-              <Upload />
+              <UploadForm />
             </Modal>
           </Content>
-          <Footer></Footer>
+          <Footer />
         </Layout>
       </div>
     );
