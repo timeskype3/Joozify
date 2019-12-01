@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Modal, Layout, Icon } from 'antd';
+import firebase from '../firebase/index';
+import Delete from './Delete';
 import UploadForm from './Upload';
+
+const database = firebase.firestore;
+const users = database.collection('User');
 
 const { Header, Footer, Content } = Layout;
 
@@ -21,12 +26,32 @@ export default class Admin extends Component {
     });
   };
 
+  onBtnDelete = e => {
+    this.setState(prevState => {
+      let set = {
+        ...prevState
+      };
+      set = { ...set, showModal2: true };
+      return set;
+    });
+  };
+
   onClose = () => {
     this.setState(prevState => {
       return {
         ...prevState,
-        showModal: false
+        showModal: false,
+        showModal2: false
       };
+    });
+  };
+
+  onBtnUser = () => {
+    // Show all user in database
+    users.get().then(snapshot => {
+      snapshot.forEach(doc => {
+        console.log('user', doc.id, doc.data());
+      });
     });
   };
 
@@ -84,6 +109,14 @@ export default class Admin extends Component {
               footer={null}
             >
               <UploadForm />
+            </Modal>
+            <Modal
+              title="Log In"
+              visible={this.state.showModal2}
+              onCancel={this.onClose}
+              footer={null}
+            >
+              <Delete />
             </Modal>
           </Content>
           <Footer />
