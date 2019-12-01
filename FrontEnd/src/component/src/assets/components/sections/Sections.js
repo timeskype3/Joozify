@@ -63,9 +63,9 @@ class Sections extends React.Component {
               className="fa fa-chevron-right forward-arrow"
               onClick={e => this.sendForward(recently)}
             />
-            <Recently audio={this.state.audio} />
+            <Recently movies={this.state.movies} />
           </div>
-          {/* <div className="section">
+          <div className="section">
             <i
               className="fa fa-chevron-left back-arrow"
               onClick={e => this.sendBack(popular)}
@@ -97,7 +97,7 @@ class Sections extends React.Component {
               onClick={e => this.sendForward(madeforyou)}
             />
             <Made movies={this.state.movies} />
-          </div> */}
+          </div>
         </div>
         <br />
         <br />
