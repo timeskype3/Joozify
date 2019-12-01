@@ -15,7 +15,7 @@ export default class Admin extends Component {
   state = {
     showModal: false,
     showModal2: false,
-    showModal3: false,
+    showModal3: false
   };
 
   onBtnUpload = e => {
@@ -49,7 +49,7 @@ export default class Admin extends Component {
   };
 
   onClose = () => {
-    this.setState(prevState => {
+    return this.setState(prevState => {
       return {
         ...prevState,
         showModal: false,
@@ -133,7 +133,7 @@ export default class Admin extends Component {
               onCancel={this.onClose}
               footer={null}
             >
-              <UploadForm />
+              <UploadForm onSave={this.onClose} />
             </Modal>
 
             <Modal

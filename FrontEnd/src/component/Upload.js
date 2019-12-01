@@ -190,6 +190,7 @@ export default class UploadForm extends Component {
   onSave = () => {
     database.add(this.state.forms).then(doc => {
       console.log('doc id', doc.id);
+      return this.props.onSave();
     });
   };
 
