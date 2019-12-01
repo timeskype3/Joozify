@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Modal, Layout, Icon } from 'antd';
 import Upload from './Upload';
 import firebase from '../firebase/index';
+import Delete from './Delete';
 
 const database = firebase.firestore;
 const users = database.collection('User');
@@ -21,6 +22,16 @@ export default class Admin extends Component {
         ...prevState
       };
       set = { ...set, showModal: true };
+      return set;
+    });
+  };
+
+  onBtnDelete = e => {
+    this.setState(prevState => {
+      let set = {
+        ...prevState
+      };
+      set = { ...set, showModal2: true };
       return set;
     });
   };
@@ -94,6 +105,14 @@ export default class Admin extends Component {
               footer={null}
             >
               <Upload />
+            </Modal>
+            <Modal
+              title="Log In"
+              visible={this.state.showModal2}
+              onCancel={this.onClose}
+              footer={null}
+            >
+              <Delete />
             </Modal>
           </Content>
           <Footer></Footer>
