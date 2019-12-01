@@ -18,7 +18,9 @@ export default class UploadForm extends Component {
     this.state = {
       storageRefs: {},
       file: {},
-      filename: ''
+      filename: '',
+      download: '',
+      finish: false
     };
   }
 
@@ -60,8 +62,16 @@ export default class UploadForm extends Component {
     storage
       .ref(`image/${filename}`)
       .put(file)
-      .then(snapshots => {
+      .then(async snapshots => {
         console.log('file uploaded', snapshots);
+        const download = await snapshots.ref.getDownloadURL();
+        return this.setState(prevState => {
+          return {
+            ...prevState,
+            download,
+            finish: true
+          };
+        });
       })
       .catch(err => {
         console.error('firebase err', err);
@@ -70,8 +80,17 @@ export default class UploadForm extends Component {
 
   render() {
     console.log('upload state', this.state);
+
+    // if (this.state.finish) {
+    //   // storage.ref(`image/${this.state.filename}`).getDownloadURL(url => {
+    //   //   console.log('download url', url);
+    //   // });
+    // }
+
     return (
       <div>
+        <span>{this.state.download}</span>
+        <img src={this.state.download} />
         <input onChange={this.onUploadChange} type="file" />
         <button onClick={this.onUpload}>Upload</button>
       </div>
