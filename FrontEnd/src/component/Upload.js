@@ -62,6 +62,12 @@ export default class UploadForm extends Component {
 
   onUploadImageChange = e => {
     // console.log('upload change', e.target);
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        finish: false
+      };
+    });
     const file = e.target.files[0];
     const filename = file.name;
     console.log('before append', file);
@@ -78,6 +84,34 @@ export default class UploadForm extends Component {
           };
         },
         () => this.onUploadImage()
+      );
+    }
+  };
+
+  onUploadMusicChange = e => {
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        finish: false
+      };
+    });
+    // console.log('upload change', e.target);
+    const fileMusic = e.target.files[0];
+    const filenameMusic = fileMusic.name;
+    console.log('before append', fileMusic);
+    if (fileMusic) {
+      return this.setState(
+        prevState => {
+          const data = new FormData();
+          data.append(filenameMusic, fileMusic);
+          console.log('after append', data);
+          return {
+            ...prevState,
+            fileMusic,
+            filenameMusic
+          };
+        },
+        () => this.onUploadMusic()
       );
     }
   };
@@ -111,19 +145,22 @@ export default class UploadForm extends Component {
 
   onUploadMusic = () => {
     console.log(this.state);
-    const { file, filename } = this.state;
+    const { fileMusic, filenameMusic } = this.state;
 
     storage
-      .ref(`music/${filename}`)
-      .put(file)
+      .ref(`music/${filenameMusic}`)
+      .put(fileMusic)
       .then(async snapshots => {
         console.log('file uploaded', snapshots);
         const download = await snapshots.ref.getDownloadURL();
         return this.setState(prevState => {
           return {
             ...prevState,
-            download,
-            finish: true
+            finish: true,
+            forms: {
+              ...prevState.forms,
+              UrlMusic: download
+            }
           };
         });
       })
@@ -147,6 +184,8 @@ export default class UploadForm extends Component {
       };
     });
   };
+
+  onSave = () => {};
 
   render() {
     console.log('upload state', this.state);
@@ -196,16 +235,20 @@ export default class UploadForm extends Component {
 
         <Form.Item label="FileMP3">
           <Input
-            onChange={this.onChange}
-            onChange={this.onUploadImageChange}
+            // onChange={this.onChange}
+            onChange={this.onUploadMusicChange}
             type="file"
           />
           {/* <Button onClick={this.onUploadMusic}>Upload</Button> */}
         </Form.Item>
 
-        <Button type="primary" size="large" onClick={this.onUploadImage}>
-          Upload
-        </Button>
+        {this.state.finish ? (
+          <Button type="primary" size="large" onClick={this.onSave}>
+            Save
+          </Button>
+        ) : (
+          'loading'
+        )}
       </Form>
     );
   }
