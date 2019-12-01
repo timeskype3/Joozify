@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Modal, Layout, Icon } from 'antd';
+import { Modal, Layout, Icon, Button } from 'antd';
 import firebase from '../firebase/index';
 import Delete from './Delete';
 import UploadForm from './Upload';
@@ -53,7 +53,8 @@ export default class Admin extends Component {
       return {
         ...prevState,
         showModal: false,
-        showModal2: false
+        showModal2: false,
+        showModal3: false
       };
     });
   };
@@ -92,6 +93,8 @@ export default class Admin extends Component {
               </Link>
             </div>
 
+            <Button onClick={this.onBtnUser} />
+
             <div className="IconAdminPage">
               <Link style={navStyle} onClick={this.onBtnUpload}>
                 <Icon
@@ -119,6 +122,7 @@ export default class Admin extends Component {
               visible={this.state.showModal3}
               onCancel={this.onClose}
               footer={null}
+              width="90%"
             >
               <ListUser />
             </Modal>
