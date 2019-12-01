@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-return-assign */
 import React, { Component } from 'react';
 import { Upload, message, Button, Icon, Form, Input, DatePicker } from 'antd';
@@ -21,7 +23,16 @@ export default class UploadForm extends Component {
       file: {},
       filename: '',
       download: '',
-      finish: false
+      finish: false,
+      forms: {
+        Artist: '',
+        Album: '',
+        Genre: '',
+        Title: '',
+        UrlImage: '',
+        UrlMusic: '',
+        Date: ''
+      }
     };
   }
 
@@ -39,7 +50,7 @@ export default class UploadForm extends Component {
 
   onChangeDate(date, dateString) {
     console.log(date, dateString);
-  };
+  }
 
   onUploadChange = e => {
     // console.log('upload change', e.target);
@@ -106,6 +117,22 @@ export default class UploadForm extends Component {
       });
   };
 
+  onChange = e => {
+    console.log(e.target.id, e.target.value);
+    let input = {};
+    input = {
+      ...input,
+      [e.target.id]: e.target.value
+    };
+
+    this.setState(prevState => {
+      return {
+        // ...prevState,
+        forms: { ...prevState.forms, ...input }
+      };
+    });
+  };
+
   render() {
     console.log('upload state', this.state);
 
@@ -125,31 +152,45 @@ export default class UploadForm extends Component {
         </Form.Item>
 
         <Form.Item label="Title">
-          <Input style={{ width: '80%' }} />
+          <Input onChange={this.onChange} id="Title" style={{ width: '80%' }} />
         </Form.Item>
 
         <Form.Item label="Artist">
-          <Input style={{ width: '80%' }} />
+          <Input
+            onChange={this.onChange}
+            id="Artist"
+            style={{ width: '80%' }}
+          />
         </Form.Item>
 
         <Form.Item label="Genre">
-          <Input style={{ width: '80%' }} />
+          <Input onChange={this.onChange} id="Genre" style={{ width: '80%' }} />
         </Form.Item>
 
         <Form.Item label="Album">
-          <Input style={{ width: '80%' }} />
+          <Input onChange={this.onChange} id="Album" style={{ width: '80%' }} />
         </Form.Item>
 
         <Form.Item label="Date Release">
-          <DatePicker onChange={this.onChangeDate} />
+          <DatePicker
+            onChange={this.onChange}
+            id="Date"
+            // onChange={this.onChangeDate}
+          />
         </Form.Item>
 
         <Form.Item label="FileMP3">
-          <Input onChange={this.onUploadChange} type="file" />
+          <Input
+            onChange={this.onChange}
+            onChange={this.onUploadChange}
+            type="file"
+          />
           {/* <Button onClick={this.onUploadMusic}>Upload</Button> */}
         </Form.Item>
 
-        <Button type="primary" size="large" onClick={this.onUpload}>Upload</Button>
+        <Button type="primary" size="large" onClick={this.onUpload}>
+          Upload
+        </Button>
       </Form>
     );
   }
