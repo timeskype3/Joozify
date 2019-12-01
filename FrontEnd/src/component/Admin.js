@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Modal, Layout, Icon } from 'antd';
-import Upload from './Upload';
+import UploadForm from './Upload';
 
 const { Header, Footer, Content } = Layout;
 
@@ -29,6 +29,7 @@ export default class Admin extends Component {
       };
     });
   };
+
   render() {
     const navStyle = {
       color: 'white'
@@ -48,7 +49,7 @@ export default class Admin extends Component {
                 <Icon
                   type="user"
                   style={{ fontSize: '120px', color: '#8e8e93' }}
-             />
+                />
 
                 <div className="AdminPage">USER</div>
               </Link>
@@ -82,10 +83,10 @@ export default class Admin extends Component {
               onCancel={this.onClose}
               footer={null}
             >
-              <Upload />
+              <UploadForm />
             </Modal>
           </Content>
-          <Footer></Footer>
+          <Footer />
         </Layout>
       </div>
     );
