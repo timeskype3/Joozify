@@ -4,47 +4,53 @@ import { Link } from 'react-router-dom';
 class Grid extends React.Component {
   render() {
     const {
-      image,
-      title,
-      match,
-      rating,
-      duration,
-      desc,
-      stars,
-      genre,
-      userRating,
-      poster
-    } = this.props.details;
-    const newTitle = title.replace(/[^A-Z0-9]/gi, '');
+      Album,
+      Artist,
+      Genre: [],
+      Title,
+      UrlImage,
+      UrlMusic,
+      Year
+    } = this.props.audio;
+    const newTitle = Title.replace(/[^A-Z0-9]/gi, '');
 
-    const movieProps = {
-      title,
-      duration,
-      userRating,
-      desc,
-      stars,
-      genre,
-      poster
+    const musicProps = {
+      Album,
+      Artist,
+      Genre: [],
+      Title,
+      UrlImage,
+      UrlMusic,
+      Year
     };
+    // const {
+    //   Album,
+    //   Artist,
+    //   Genre: [],
+    //   Title,
+    //   UrlImage,
+    //   UrlMusic,
+    //   Year
+    // } = this.props.sound;
 
     return (
       <Link
         to={{
           pathname: `/main/music/${newTitle}`,
-          state: { movieProps }
+          state: { musicProps }
         }}
         className={`grid-item ${newTitle}`}
       >
         <div className="grid-overlay"></div>
         <div className="transform-me">
-          <img src={image} alt={title} />
+          <img src={UrlImage} alt={Title} />
         </div>
         <div className="movie-details">
-          <p className="grid-title">{title}</p>
+          <p className="grid-title">{Title}</p>
           <p className="grid-sub">
-            <span className="green">{match} Match</span>
-            <span className="rate">{rating}</span>
-            <span className="duration">{duration}</span>
+            <span className="green">{Album} Match</span>
+            <span className="rate">{Artist}</span>
+            <span className="duration">{Year}</span>
           </p>
         </div>
       </Link>
