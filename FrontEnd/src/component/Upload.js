@@ -48,30 +48,41 @@ export default class UploadForm extends Component {
   //   const file =
   // }
 
-  onChangeDate(date, dateString) {
-    console.log(date, dateString);
-  }
+  onChangeDate = (date, dateString) => {
+    return this.setState(prevState => {
+      return {
+        ...prevState,
+        forms: {
+          ...prevState.forms,
+          Date: date.format('DD-MM-YYYY')
+        }
+      };
+    });
+  };
 
-  onUploadChange = e => {
+  onUploadImageChange = e => {
     // console.log('upload change', e.target);
     const file = e.target.files[0];
     const filename = file.name;
     console.log('before append', file);
     if (file) {
-      return this.setState(prevState => {
-        const data = new FormData();
-        data.append(filename, file);
-        console.log('after append', data);
-        return {
-          ...prevState,
-          file,
-          filename
-        };
-      });
+      return this.setState(
+        prevState => {
+          const data = new FormData();
+          data.append(filename, file);
+          console.log('after append', data);
+          return {
+            ...prevState,
+            file,
+            filename
+          };
+        },
+        () => this.onUploadImage()
+      );
     }
   };
 
-  onUpload = () => {
+  onUploadImage = () => {
     console.log(this.state);
     const { file, filename } = this.state;
 
@@ -85,7 +96,11 @@ export default class UploadForm extends Component {
           return {
             ...prevState,
             download,
-            finish: true
+            finish: true,
+            forms: {
+              ...prevState.forms,
+              UrlImage: download
+            }
           };
         });
       })
@@ -127,7 +142,7 @@ export default class UploadForm extends Component {
 
     this.setState(prevState => {
       return {
-        // ...prevState,
+        ...prevState,
         forms: { ...prevState.forms, ...input }
       };
     });
@@ -147,7 +162,7 @@ export default class UploadForm extends Component {
         {/* <span>{this.state.download}</span> */}
         <Form.Item label="Digital Album">
           <img src={this.state.download} />
-          <Input onChange={this.onUploadChange} type="file" />
+          <Input onChange={this.onUploadImageChange} type="file" />
           {/* <Button onClick={this.onUpload}>Upload</Button> */}
         </Form.Item>
 
@@ -173,22 +188,22 @@ export default class UploadForm extends Component {
 
         <Form.Item label="Date Release">
           <DatePicker
-            onChange={this.onChange}
+            // onChange={this.onChange}
             id="Date"
-            // onChange={this.onChangeDate}
+            onChange={this.onChangeDate}
           />
         </Form.Item>
 
         <Form.Item label="FileMP3">
           <Input
             onChange={this.onChange}
-            onChange={this.onUploadChange}
+            onChange={this.onUploadImageChange}
             type="file"
           />
           {/* <Button onClick={this.onUploadMusic}>Upload</Button> */}
         </Form.Item>
 
-        <Button type="primary" size="large" onClick={this.onUpload}>
+        <Button type="primary" size="large" onClick={this.onUploadImage}>
           Upload
         </Button>
       </Form>
