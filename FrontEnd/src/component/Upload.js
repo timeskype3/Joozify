@@ -5,8 +5,10 @@ import React, { Component } from 'react';
 import { Upload, message, Button, Icon, Form, Input, DatePicker } from 'antd';
 import firebase from '../firebase';
 
-const { storage } = firebase;
+const { storage, firestore } = firebase;
 const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
+
+const database = firestore.collection('Music');
 
 // export default function UploadForm() {
 
@@ -185,7 +187,11 @@ export default class UploadForm extends Component {
     });
   };
 
-  onSave = () => {};
+  onSave = () => {
+    database.add(this.state.forms).then(doc => {
+      console.log('doc id', doc.id);
+    });
+  };
 
   render() {
     console.log('upload state', this.state);
