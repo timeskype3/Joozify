@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Modal, Layout, Icon } from 'antd';
 import firebase from '../firebase/index';
 import Delete from './Delete';
+import UploadForm from './Upload';
 
 const database = firebase.firestore;
 const users = database.collection('User');
@@ -39,7 +40,8 @@ export default class Admin extends Component {
     this.setState(prevState => {
       return {
         ...prevState,
-        showModal: false
+        showModal: false,
+        showModal2: false
       };
     });
   };
@@ -90,7 +92,7 @@ export default class Admin extends Component {
               type="delete"
               style={{ fontSize: '120px', color: '#8e8e93' }}
             />
-            <Link style={navStyle} onClick={this.onBtnUpload}>
+            <Link style={navStyle} onClick={this.onBtnDelete}>
               <br />
               <h1 className="Adminp">DEL</h1>
               <h1 className="Adminp2">E</h1>
