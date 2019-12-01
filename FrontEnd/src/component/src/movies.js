@@ -16,6 +16,8 @@ import parPoster from '../src/assets/img/trending/par-poster.jpg';
 import trPoster from '../src/assets/img/trending/tr-poster.jpg';
 import dPoster from '../src/assets/img/trending/d-poster.jpg';
 
+//music
+
 const movies = {
   is: {
     image: ints,

@@ -8,7 +8,7 @@ import FilePondImagePreview from 'filepond-plugin-image-preview';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 registerPlugin(FilePondImagePreview);
 
-const storage = firebase.storage();
+const storage = firebase.storage;
 
 class Store extends Component {
   constructor(props) {

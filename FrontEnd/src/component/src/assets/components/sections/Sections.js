@@ -6,12 +6,16 @@ import Made from './Made';
 import movies from '../../../movies';
 import { moveBack } from '../../../Helpers';
 import { moveForward } from '../../../Helpers';
+import firebase from '../../../../../firebase/index';
+import { element } from 'prop-types';
+
+const database = firebase.firestore;
+const music = database.collection('Music');
 
 class Sections extends React.Component {
   state = {
     movies
   };
-
   sendBack = p => {
     moveBack(p);
   };
@@ -19,7 +23,6 @@ class Sections extends React.Component {
   sendForward = p => {
     moveForward(p);
   };
-
   render() {
     const recently = 'recently';
     const popular = 'popular';

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Modal, Layout, Icon } from 'antd';
-import Upload from './Upload';
 import firebase from '../firebase/index';
+import UploadForm from './Upload';
 
 const database = firebase.firestore;
 const users = database.collection('User');
@@ -93,10 +93,10 @@ export default class Admin extends Component {
               onCancel={this.onClose}
               footer={null}
             >
-              <Upload />
+              <UploadForm />
             </Modal>
           </Content>
-          <Footer></Footer>
+          <Footer />
         </Layout>
       </div>
     );

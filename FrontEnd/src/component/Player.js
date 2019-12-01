@@ -14,12 +14,12 @@ let options = {
   ],
   audioLists: [
     {
-      name: 'Bedtime Stories',
-      singer: 'Jay Chou',
+      name: 'Feel Special',
+      singer: 'Twice',
       cover:
-        'http://res.cloudinary.com/alick/image/upload/v1502375978/bedtime_stories_bywggz.jpg',
+        'https://firebasestorage.googleapis.com/v0/b/joozify.appspot.com/o/ImageURL%2FK-pop%2FTWICE%20-%20Feel%20Special(New%20Release).jpg?alt=media&token=bfebc5d1-6515-421d-afdb-967a497cfdff',
       musicSrc:
-        'http://res.cloudinary.com/alick/video/upload/v1502375674/Bedtime_Stories.mp3'
+        'https://firebasestorage.googleapis.com/v0/b/joozify.appspot.com/o/MusicURL%2FFeel%20Special.mp3?alt=media&token=0ffff46e-a750-4d65-859e-910a48f88dbb'
     },
     {
       name: '难得',
