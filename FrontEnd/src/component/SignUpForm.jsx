@@ -85,17 +85,6 @@ class RegistrationForm extends React.Component {
   };
 
   render() {
-    // Show all user in database
-
-    // database
-    //   .collection('User')
-    //   .get()
-    //   .then(snapshot => {
-    //     snapshot.forEach(doc => {
-    //       console.log('userjaaa', doc.id, doc.data());
-    //     });
-    //   });
-
     const { getFieldDecorator } = this.props.form;
     const formItemLayout = {
       labelCol: {

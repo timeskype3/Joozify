@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Modal, Layout, Icon } from 'antd';
 import Upload from './Upload';
+import firebase from '../firebase/index';
+
+const database = firebase.firestore;
+const users = database.collection('User');
 
 const { Header, Footer, Content } = Layout;
 
@@ -29,6 +33,16 @@ export default class Admin extends Component {
       };
     });
   };
+
+  onBtnUser = () => {
+    // Show all user in database
+    users.get().then(snapshot => {
+      snapshot.forEach(doc => {
+        console.log('user', doc.id, doc.data());
+      });
+    });
+  };
+
   render() {
     const navStyle = {
       color: 'white'
@@ -44,7 +58,7 @@ export default class Admin extends Component {
           <Content>
             <Icon type="user" style={{ fontSize: '120px', color: '#8e8e93' }} />
 
-            <Link style={navStyle} onClick={this.onBtnUpload}>
+            <Link style={navStyle} onClick={this.onBtnUser}>
               <br />
               <h1 className="Adminp">US</h1>
               <h1 className="Adminp2">E</h1>
