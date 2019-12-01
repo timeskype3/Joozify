@@ -121,7 +121,7 @@ export default class UploadForm extends Component {
         <Form.Item label="Digital Album">
           <img src={this.state.download} />
           <Input onChange={this.onUploadChange} type="file" />
-          <Button onClick={this.onUpload}>Upload</Button>
+          {/* <Button onClick={this.onUpload}>Upload</Button> */}
         </Form.Item>
 
         <Form.Item label="Title">

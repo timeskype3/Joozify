@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Modal, Layout, Icon } from 'antd';
+import { Modal, Layout, Icon, Button } from 'antd';
 import firebase from '../firebase/index';
 import Delete from './Delete';
 import UploadForm from './Upload';
+import ListUser from './ListUser';
 
 const database = firebase.firestore;
 const users = database.collection('User');
@@ -13,7 +14,8 @@ const { Header, Footer, Content } = Layout;
 export default class Admin extends Component {
   state = {
     showModal: false,
-    showModal2: false
+    showModal2: false,
+    showModal3: false,
   };
 
   onBtnUpload = e => {
@@ -36,12 +38,23 @@ export default class Admin extends Component {
     });
   };
 
+  onBtnListUser = e => {
+    this.setState(prevState => {
+      let set = {
+        ...prevState
+      };
+      set = { ...set, showModal3: true };
+      return set;
+    });
+  };
+
   onClose = () => {
     this.setState(prevState => {
       return {
         ...prevState,
         showModal: false,
-        showModal2: false
+        showModal2: false,
+        showModal3: false
       };
     });
   };
@@ -70,7 +83,7 @@ export default class Admin extends Component {
 
           <Content>
             <div className="IconAdminPage">
-              <Link style={navStyle} onClick={this.onBtnUpload}>
+              <Link style={navStyle} onClick={this.onBtnListUser}>
                 <Icon
                   type="user"
                   style={{ fontSize: '120px', color: '#8e8e93' }}
@@ -79,6 +92,8 @@ export default class Admin extends Component {
                 <div className="AdminPage">USER</div>
               </Link>
             </div>
+
+            <Button onClick={this.onBtnUser} />
 
             <div className="IconAdminPage">
               <Link style={navStyle} onClick={this.onBtnUpload}>
@@ -103,6 +118,16 @@ export default class Admin extends Component {
             </div>
 
             <Modal
+              title="User"
+              visible={this.state.showModal3}
+              onCancel={this.onClose}
+              footer={null}
+              width="90%"
+            >
+              <ListUser />
+            </Modal>
+
+            <Modal
               title="Upload New Music"
               visible={this.state.showModal}
               onCancel={this.onClose}
@@ -110,6 +135,7 @@ export default class Admin extends Component {
             >
               <UploadForm />
             </Modal>
+
             <Modal
               title="Delete music"
               visible={this.state.showModal2}
