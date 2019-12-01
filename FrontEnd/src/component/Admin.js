@@ -41,40 +41,43 @@ export default class Admin extends Component {
             <h1 className="Logo-2 LogoSize">i</h1>
             <h1 className="Logo LogoSize ">fy </h1>
           </Header>
+
           <Content>
-            <Icon type="user" style={{ fontSize: '120px', color: '#8e8e93' }} />
+            <div className="IconAdminPage">
+              <Link style={navStyle} onClick={this.onBtnUpload}>
+                <Icon
+                  type="user"
+                  style={{ fontSize: '120px', color: '#8e8e93' }}
+             />
 
-            <Link style={navStyle} onClick={this.onBtnUpload}>
-              <br />
-              <h1 className="Adminp">US</h1>
-              <h1 className="Adminp2">E</h1>
-              <h1 className="Adminp">R </h1>
-            </Link>
+                <div className="AdminPage">USER</div>
+              </Link>
+            </div>
 
-            <Icon
-              type="to-top"
-              style={{ fontSize: '120px', color: '#8e8e93' }}
-            />
+            <div className="IconAdminPage">
+              <Link style={navStyle} onClick={this.onBtnUpload}>
+                <Icon
+                  type="to-top"
+                  style={{ fontSize: '120px', color: '#8e8e93' }}
+                />
 
-            <Link style={navStyle} onClick={this.onBtnUpload}>
-              <br />
-              <h1 className="Adminp">UPL</h1>
-              <h1 className="Adminp2">O</h1>
-              <h1 className="Adminp">AD </h1>
-            </Link>
-            <Icon
-              type="delete"
-              style={{ fontSize: '120px', color: '#8e8e93' }}
-            />
-            <Link style={navStyle} onClick={this.onBtnUpload}>
-              <br />
-              <h1 className="Adminp">DEL</h1>
-              <h1 className="Adminp2">E</h1>
-              <h1 className="Adminp">TE</h1>
-            </Link>
+                <div className="AdminPage">UPLOAD</div>
+              </Link>
+            </div>
+
+            <div className="IconAdminPage">
+              <Link style={navStyle} onClick={this.onBtnUpload}>
+                <Icon
+                  type="delete"
+                  style={{ fontSize: '120px', color: '#8e8e93' }}
+                />
+
+                <div className="AdminPage">DELETE</div>
+              </Link>
+            </div>
 
             <Modal
-              title="Log In"
+              title="Upload New Music"
               visible={this.state.showModal}
               onCancel={this.onClose}
               footer={null}

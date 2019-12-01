@@ -43,21 +43,22 @@
   color: #ffbe17;
   font-family: 'sf_pro_displayheavy';
 }
-.Adminp {
-  position: relative;
+.AdminPage {
   z-index: 2;
   font-family: 'sf_pro_displayheavy';
-  color: white;
+  color: #cdcdcd;
   font-size: 40px;
-  display: inline;
+  /* display: inline; */
+  box-sizing: border-box;
+  height: 133px;
+  width: 111px;
 }
-.Adminp2 {
-  position: relative;
-  z-index: 2;
-  display: inline;
-  font-size: 40px;
-  color: #ffbe17;
-  font-family: 'sf_pro_displayheavy';
+.IconAdminPage{
+  padding: 40px;
+  justify-content: center;
+  display: flex;
+  text-align: center;
+  align-content: center;
 }
 
 .SubLogo {

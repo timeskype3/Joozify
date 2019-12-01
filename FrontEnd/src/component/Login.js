@@ -64,7 +64,7 @@ export default class Login extends Component {
           <div className="Logo LogoSize">fy. </div>
           <h2 className="SubLogo">A millions songs </h2>
           <h3 className="SubLogo2">that on your hand</h3>
-          <Link style={navStyle} to="/main">
+          {/* <Link style={navStyle} to="/main">
             <Button type="link">Test Main</Button>
           </Link>
           <Link style={navStyle} to="/store">
@@ -72,7 +72,7 @@ export default class Login extends Component {
           </Link>
           <Link style={navStyle} to="/admin">
             <Button type="link">Admin</Button>
-          </Link>
+          </Link> */}
         </div>
 
         <Modal
