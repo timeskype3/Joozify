@@ -23,12 +23,14 @@ class App extends Component {
       if (user) {
         this.setState({
           auth: firebase.auth().currentUser.email
+          // Data: user.get()
         });
       }
     });
   }
 
   componentDidUpdate() {
+    //const currentData = this.state.Data;
     const currentUser = this.state.auth;
     console.log(currentUser);
     if (currentUser && !this.state.isRedirected) {

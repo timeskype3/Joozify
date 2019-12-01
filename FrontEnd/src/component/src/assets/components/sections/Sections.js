@@ -1,16 +1,41 @@
 import React from 'react';
+import { element } from 'prop-types';
 import Recently from './Recently';
 import Popular from './Popular';
 import NewReleases from './NewReleases';
 import Made from './Made';
 import movies from '../../../movies';
-import { moveBack } from '../../../Helpers';
-import { moveForward } from '../../../Helpers';
+import { moveBack, moveForward } from '../../../Helpers';
+
+import firebase from '../../../../../firebase/index';
+
+const database = firebase.firestore;
+const music = database.collection('Music');
 
 class Sections extends React.Component {
-  state = {
-    movies
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      movies,
+      yee: []
+    };
+  }
+
+  // yee query
+  componentDidMount() {
+    console.log('section', music);
+    music.get().then(e => {
+      e.forEach(m => {
+        console.log(m.id, ' => ', m.data());
+        this.setState(prevState => {
+          return {
+            ...prevState,
+            yee: [...prevState.yee, m.data()]
+          };
+        });
+      });
+    });
+  }
 
   sendBack = p => {
     moveBack(p);
@@ -21,6 +46,7 @@ class Sections extends React.Component {
   };
 
   render() {
+    console.log('section cur state', this.state);
     const recently = 'recently';
     const popular = 'popular';
     const newReleases = 'new-releases';

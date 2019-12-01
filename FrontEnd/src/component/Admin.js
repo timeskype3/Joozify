@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Modal, Layout, Icon } from 'antd';
-import Upload from './Upload';
 import firebase from '../firebase/index';
 import Delete from './Delete';
 
@@ -104,7 +103,7 @@ export default class Admin extends Component {
               onCancel={this.onClose}
               footer={null}
             >
-              <Upload />
+              <UploadForm />
             </Modal>
             <Modal
               title="Log In"
@@ -115,7 +114,7 @@ export default class Admin extends Component {
               <Delete />
             </Modal>
           </Content>
-          <Footer></Footer>
+          <Footer />
         </Layout>
       </div>
     );
