@@ -13,6 +13,14 @@ const database = firebase.firestore;
 const music = database.collection('Music');
 
 class Sections extends React.Component {
+  componentDidMount() {
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        movies: []
+      };
+    });
+  }
   state = {
     movies
   };
