@@ -35,14 +35,14 @@ export default class Delete extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         <div className="field">
-          <label className="label"> Song name </label>
+          <label className="label"> Music name </label>
           <div className="control">
             <input className="input" name="songname" onChange={this.onChange} />
           </div>
         </div>
         <div className="field is-grouped">
           <div className="control">
-            <button className="button is-link"> Delete </button>
+            <button className="button is-danger"> Delete </button>
           </div>
         </div>
       </form>

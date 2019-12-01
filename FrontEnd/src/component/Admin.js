@@ -92,7 +92,7 @@ export default class Admin extends Component {
             </div>
 
             <div className="IconAdminPage">
-              <Link style={navStyle} onClick={this.onBtnUpload}>
+              <Link style={navStyle} onClick={this.onBtnDelete}>
                 <Icon
                   type="delete"
                   style={{ fontSize: '120px', color: '#8e8e93' }}
@@ -111,7 +111,7 @@ export default class Admin extends Component {
               <UploadForm />
             </Modal>
             <Modal
-              title="Log In"
+              title="Delete music"
               visible={this.state.showModal2}
               onCancel={this.onClose}
               footer={null}
