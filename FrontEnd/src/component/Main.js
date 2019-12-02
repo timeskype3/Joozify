@@ -75,7 +75,10 @@ export default class Main extends Component {
             />
           </div>
           <div className="Side-Account">
-            <Avatar size={64} icon="user" />
+            <Avatar
+              size={64}
+              src="https://firebasestorage.googleapis.com/v0/b/joozify.appspot.com/o/56806446_2882375458653630_6085617536265617408_o.jpg?alt=media&token=5c92ea8d-3cad-4a74-bded-d734924af846"
+            />
             <h1>{currentUser.displayName}</h1>
             <h1>
               <Icon type="logout" style={icon} onClick={this.logout} />
