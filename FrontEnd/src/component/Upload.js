@@ -265,7 +265,7 @@ export default class UploadForm extends Component {
           {/* <Button onClick={this.onUploadMusic}>Upload</Button> */}
         </Form.Item>
 
-        {this.state.filename == '' && this.state.fileMusic == null ? (
+        {this.state.filename === '' && this.state.fileMusic === null ? (
           <Button type="primary" size="large">
             Save
           </Button>

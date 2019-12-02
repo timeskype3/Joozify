@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Modal } from 'antd';
 import 'antd/dist/antd.css';
-import { Link } from 'react-router-dom';
 import './Login.css';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';

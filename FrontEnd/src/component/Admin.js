@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Modal, Layout, Icon, Button } from 'antd';
-import firebase from '../firebase/index';
+import { Modal, Layout, Icon } from 'antd';
 import Delete from './Delete';
 import UploadForm from './Upload';
 import ListUser from './ListUser';
-
-const database = firebase.firestore;
-const users = database.collection('User');
 
 const { Header, Footer, Content } = Layout;
 
@@ -58,27 +54,6 @@ export default class Admin extends Component {
       };
     });
   };
-
-  // onBtnUser = () => {
-  //   // Show all user in database
-  //   users.get().then(snapshot => {
-  //     snapshot.forEach(doc => {
-  //       // console.log('user', doc.id, doc.data());
-  //       let userlist = [...this.state.userlist];
-  //       userlist.push({
-  //         id: doc.id,
-  //         email: doc.data().email,
-  //         nickname: doc.data().nickname,
-  //         phone: doc.data().phone,
-  //         role: doc.data().role
-  //       })
-  //       this.setState({userlist});
-  //       console.log('user id: ',userlist[1].id, 'user email: ',userlist[1].email);
-  //       // console.log('doc id: ',doc.id, 'doc email: ',doc.data().email);
-
-  //     });
-  //   });
-  // };
 
   render() {
     const navStyle = {

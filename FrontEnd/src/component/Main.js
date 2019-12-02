@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Avatar, Icon, Input, Button } from 'antd';
+import { Avatar, Icon, Input } from 'antd';
 
 //CSS
 import './src/assets/css/normalize.css';

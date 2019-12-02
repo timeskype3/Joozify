@@ -8,9 +8,23 @@ export default class Delete extends Component {
     super(props);
 
     this.state = {
-      songname: ''
+      songname: '',
+      selectedRowKeys: [], // Check here to configure the default column
+      loading: false
     };
   }
+
+  start = () => {
+    this.setState({ loading: true });
+    // ajax request after empty completing
+    setTimeout(() => {
+      this.setState({
+        selectedRowKeys: [],
+        loading: false
+      });
+    }, 1000);
+  };
+
   onChange = e => {
     const { name, value } = e.target;
 
