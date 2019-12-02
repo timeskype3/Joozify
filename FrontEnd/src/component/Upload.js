@@ -2,11 +2,21 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-return-assign */
 import React, { Component } from 'react';
-import { Upload, message, Button, Icon, Form, Input, DatePicker } from 'antd';
+import {
+  Upload,
+  message,
+  Button,
+  Form,
+  Input,
+  DatePicker,
+  Icon,
+  Spin
+} from 'antd';
 import firebase from '../firebase';
 
 const { storage, firestore } = firebase;
 const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
+const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
 const database = firestore.collection('Music');
 
@@ -24,6 +34,7 @@ export default class UploadForm extends Component {
       storageRefs: {},
       file: {},
       filename: '',
+      fileMusic: null,
       download: '',
       finish: false,
       forms: {
@@ -213,7 +224,12 @@ export default class UploadForm extends Component {
         </Form.Item>
 
         <Form.Item label="Title">
-          <Input onChange={this.onChange} id="Title" style={{ width: '80%' }} />
+          <Input
+            onChange={this.onChange}
+            id="Title"
+            style={{ width: '80%' }}
+            required
+          />
         </Form.Item>
 
         <Form.Item label="Artist">
@@ -249,12 +265,16 @@ export default class UploadForm extends Component {
           {/* <Button onClick={this.onUploadMusic}>Upload</Button> */}
         </Form.Item>
 
-        {this.state.finish ? (
+        {this.state.filename == '' && this.state.fileMusic == null ? (
+          <Button type="primary" size="large">
+            Save
+          </Button>
+        ) : !this.state.finish ? (
+          <Spin indicator={antIcon} />
+        ) : (
           <Button type="primary" size="large" onClick={this.onSave}>
             Save
           </Button>
-        ) : (
-          'loading'
         )}
       </Form>
     );

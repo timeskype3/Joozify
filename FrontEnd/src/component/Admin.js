@@ -105,8 +105,6 @@ export default class Admin extends Component {
               </Link>
             </div>
 
-            <Button onClick={this.onBtnUser} />
-
             <div className="IconAdminPage">
               <Link style={navStyle} onClick={this.onBtnUpload}>
                 <Icon

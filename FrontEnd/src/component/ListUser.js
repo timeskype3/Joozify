@@ -5,24 +5,6 @@ import firebase from '../firebase/index';
 
 const database = firebase.firestore;
 const users = database.collection('User');
-const data = [
-  {
-    key: '1',
-    name: 'John',
-    password: 47158,
-    email: 'seia@u.com',
-    phone: '0610120492',
-    role: 'normaluser'
-  },
-  {
-    key: '2',
-    name: 'NaJeongMoSaJiMiDaChaeTzu',
-    password: 2129,
-    email: 'Twice@Once.com',
-    phone: '0875609045',
-    role: 'normaluser'
-  }
-];
 
 class ListUser extends Component {
   state = {
@@ -32,6 +14,7 @@ class ListUser extends Component {
       {
         id: '',
         email: '',
+        password: '',
         nickname: '',
         phone: '',
         role: ''
@@ -118,59 +101,67 @@ class ListUser extends Component {
     this.setState({ searchText: '' });
   };
 
-  render() {
-    users.get().then(snapshot => {
-      snapshot.forEach(doc => {
-        // console.log('user', doc.id, doc.data());
-        // let userlist = [...this.state.userlist];
-        // userlist.push({
-        //   id: doc.id,
-        //   email: doc.data().email,
-        //   nickname: doc.data().nickname,
-        //   phone: doc.data().phone,
-        //   role: doc.data().role
-        // })
-        // this.setState({userlist});
-        // console.log('user id: ',userlist[1].id, 'user email: ',userlist[1].email);
-        // // console.log('doc id: ',doc.id, 'doc email: ',doc.data().email);
-
-        const columns = [
-          {
-            title: 'Nickname',
-            dataIndex: 'name',
-            key: 'name',
-            width: '30%',
-            ...this.getColumnSearchProps(doc.data().nickname)
-          },
-          {
-            title: 'Password',
-            dataIndex: 'password',
-            key: 'password',
-            width: '20%',
-            ...this.getColumnSearchProps(doc.data().password)
-          },
-          {
-            title: 'E-mail',
-            dataIndex: 'email',
-            key: 'email',
-            ...this.getColumnSearchProps(doc.data().email)
-          },
-          {
-            title: 'Phone',
-            dataIndex: 'phone',
-            key: 'phone',
-            ...this.getColumnSearchProps(doc.data().phone)
-          },
-          {
-            title: 'Role',
-            dataIndex: 'role',
-            key: 'role',
-            ...this.getColumnSearchProps(doc.data().role)
-          }
-        ];
-        return <Table columns={columns} dataSource={doc} />;
+  query = users.get().then(snapshot => {
+    snapshot.forEach(doc => {
+      // console.log('user', doc.id, doc.data());
+      let userlist = [...this.state.userlist];
+      userlist.push({
+        id: doc.id,
+        email: doc.data().email,
+        password: doc.data().password,
+        nickname: doc.data().nickname,
+        phone: doc.data().phone,
+        role: doc.data().role
       });
+      this.setState({ userlist });
+      // console.log(
+      //   'user id: ',
+      //   userlist[1].id,
+      //   'user email: ',
+      //   userlist[1].email
+      // );
+      // console.log('userlist',userlist);
+      // console.log('doc id: ',doc.id, 'doc email: ',doc.data().email);
     });
+  });
+  render() {
+    const userlist = this.state.userlist;
+    // console.log('userlistintable',userlist);
+    const columns = [
+      {
+        title: 'Nickname',
+        dataIndex: 'nickname',
+        key: 'nickname',
+        // width: '20%',
+        ...this.getColumnSearchProps('nickname')
+      },
+      {
+        title: 'E-mail',
+        dataIndex: 'email',
+        key: 'email',
+        ...this.getColumnSearchProps('email')
+      },
+      {
+        title: 'Password',
+        dataIndex: 'password',
+        key: 'password',
+        // width: '20%',
+        ...this.getColumnSearchProps('password')
+      },
+      {
+        title: 'Phone',
+        dataIndex: 'phone',
+        key: 'phone',
+        ...this.getColumnSearchProps('phone')
+      },
+      {
+        title: 'Role',
+        dataIndex: 'role',
+        key: 'role',
+        ...this.getColumnSearchProps('role')
+      }
+    ];
+    return <Table columns={columns} dataSource={userlist} />;
   }
 }
 
