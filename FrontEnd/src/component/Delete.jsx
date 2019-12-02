@@ -43,17 +43,7 @@ export default class Delete extends Component {
     this.state = {
       selectedRowKeys: [], // Check here to configure the default column
       loading: false,
-      Musiclist: [
-        // {
-        //   Artist: '',
-        //   Album: '',
-        //   Genre: '',
-        //   Title: '',
-        //   UrlImage: '',
-        //   UrlMusic: '',
-        //   Date: ''
-        // }
-      ]
+      Musiclist: []
     };
   }
 
@@ -63,7 +53,6 @@ export default class Delete extends Component {
       const shortUrlImage = doc.data().UrlImage.substring(0, 40) + '...';
       const shortUrlMusic = doc.data().UrlMusic.substring(0, 40) + '...';
       Musiclist.push({
-        // docId: doc.id,
         key: doc.id,
         Artist: doc.data().Artist,
         Album: doc.data().Album,
@@ -74,8 +63,6 @@ export default class Delete extends Component {
         Date: doc.data().Date
       });
       this.setState({ Musiclist });
-      // console.log('Musiclist:::', Musiclist);
-      // console.log('doc id: ',doc.id, 'doc email: ',doc.data().email);
     });
   });
 
@@ -121,7 +108,6 @@ export default class Delete extends Component {
     };
     const hasSelected = selectedRowKeys.length > 0;
     const Musiclist = this.state.Musiclist;
-    // console.log('MusicKey: ', Musiclist.keys);
     return (
       <div>
         <div style={{ marginBottom: 16 }}>

@@ -10,16 +10,7 @@ class ListUser extends Component {
   state = {
     searchText: '',
     searchedColumn: '',
-    userlist: [
-      // {
-      //   id: '',
-      //   email: '',
-      //   password: '',
-      //   nickname: '',
-      //   phone: '',
-      //   role: ''
-      // }
-    ]
+    userlist: []
   };
 
   getColumnSearchProps = dataIndex => ({
@@ -114,19 +105,10 @@ class ListUser extends Component {
         role: doc.data().role
       });
       this.setState({ userlist });
-      // console.log(
-      //   'user id: ',
-      //   userlist[1].id,
-      //   'user email: ',
-      //   userlist[1].email
-      // );
-      // console.log('userlist',userlist);
-      // console.log('doc id: ',doc.id, 'doc email: ',doc.data().email);
     });
   });
   render() {
     const userlist = this.state.userlist;
-    // console.log('userlistintable',userlist);
     const columns = [
       {
         title: 'Nickname',

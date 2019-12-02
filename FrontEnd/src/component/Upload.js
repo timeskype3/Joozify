@@ -7,15 +7,7 @@ import firebase from '../firebase';
 
 const { storage, firestore } = firebase;
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
-
 const database = firestore.collection('Music');
-
-// export default function UploadForm() {
-
-//   function
-
-//   return <div>SeiA</div>;
-// }
 
 export default class UploadForm extends Component {
   constructor(props) {
@@ -39,18 +31,6 @@ export default class UploadForm extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   return this.setState(prevState => {
-  //     return {
-  //       ...prevState,
-  //       storageRefs: storage
-  //     };
-  //   });
-  // }
-  // onUpload = () => {
-  //   const file =
-  // }
-
   onChangeDate = (date, dateString) => {
     return this.setState(prevState => {
       return {
@@ -64,7 +44,6 @@ export default class UploadForm extends Component {
   };
 
   onUploadImageChange = e => {
-    // console.log('upload change', e.target);
     this.setState(prevState => {
       return {
         ...prevState,
@@ -98,7 +77,6 @@ export default class UploadForm extends Component {
         finish: false
       };
     });
-    // console.log('upload change', e.target);
     const fileMusic = e.target.files[0];
     const filenameMusic = fileMusic.name;
     console.log('before append', fileMusic);
@@ -198,19 +176,11 @@ export default class UploadForm extends Component {
   render() {
     console.log('upload state', this.state);
 
-    // if (this.state.finish) {
-    //   // storage.ref(`image/${this.state.filename}`).getDownloadURL(url => {
-    //   //   console.log('download url', url);
-    //   // });
-    // }
-
     return (
       <Form>
-        {/* <span>{this.state.download}</span> */}
         <Form.Item label="Digital Album">
           <img src={this.state.download} />
           <Input onChange={this.onUploadImageChange} type="file" />
-          {/* <Button onClick={this.onUpload}>Upload</Button> */}
         </Form.Item>
 
         <Form.Item label="Title">
@@ -252,7 +222,6 @@ export default class UploadForm extends Component {
             onChange={this.onUploadMusicChange}
             type="file"
           />
-          {/* <Button onClick={this.onUploadMusic}>Upload</Button> */}
         </Form.Item>
 
         {this.state.filename === '' && this.state.fileMusic === null ? (
