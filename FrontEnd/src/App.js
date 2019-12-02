@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Switch, Route, withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 
 import firebase from './firebase/index';
 //CSS

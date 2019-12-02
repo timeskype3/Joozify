@@ -11,14 +11,14 @@ class ListUser extends Component {
     searchText: '',
     searchedColumn: '',
     userlist: [
-      {
-        id: '',
-        email: '',
-        password: '',
-        nickname: '',
-        phone: '',
-        role: ''
-      }
+      // {
+      //   id: '',
+      //   email: '',
+      //   password: '',
+      //   nickname: '',
+      //   phone: '',
+      //   role: ''
+      // }
     ]
   };
 

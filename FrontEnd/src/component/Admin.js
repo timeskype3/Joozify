@@ -126,6 +126,7 @@ export default class Admin extends Component {
               visible={this.state.showModal2}
               onCancel={this.onClose}
               footer={null}
+              width="90%"
             >
               <Delete />
             </Modal>

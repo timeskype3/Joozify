@@ -2,20 +2,10 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-return-assign */
 import React, { Component } from 'react';
-import {
-  Upload,
-  message,
-  Button,
-  Form,
-  Input,
-  DatePicker,
-  Icon,
-  Spin
-} from 'antd';
+import { Button, Form, Input, DatePicker, Icon, Spin } from 'antd';
 import firebase from '../firebase';
 
 const { storage, firestore } = firebase;
-const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
 const database = firestore.collection('Music');
