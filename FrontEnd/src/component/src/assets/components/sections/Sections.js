@@ -17,11 +17,11 @@ class Sections extends React.Component {
     super(props);
     this.state = {
       movies,
-      yee: []
+      audio: []
     };
   }
 
-  // yee query
+  // audio query
   componentDidMount() {
     console.log('section', music);
     music.get().then(e => {
@@ -30,7 +30,7 @@ class Sections extends React.Component {
         this.setState(prevState => {
           return {
             ...prevState,
-            yee: [...prevState.yee, m.data()]
+            audio: [...prevState.audio, m.data()]
           };
         });
       });

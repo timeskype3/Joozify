@@ -5,7 +5,7 @@ class NotFound extends React.Component {
     return (
       <div className="notFound">
         404: Page Not Found
-        <Link to="/netflix-react">Return home</Link>
+        <Link to="/">Return home</Link>
       </div>
     );
   }

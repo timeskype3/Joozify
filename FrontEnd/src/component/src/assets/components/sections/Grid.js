@@ -26,6 +26,15 @@ class Grid extends React.Component {
       genre,
       poster
     };
+    // const {
+    //   Album,
+    //   Artist,
+    //   Genre: [],
+    //   Title,
+    //   UrlImage,
+    //   UrlMusic,
+    //   Year
+    // } = this.props.sound;
 
     return (
       <Link

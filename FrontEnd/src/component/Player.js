@@ -22,10 +22,11 @@ let options = {
         'https://firebasestorage.googleapis.com/v0/b/joozify.appspot.com/o/MusicURL%2FFeel%20Special.mp3?alt=media&token=0ffff46e-a750-4d65-859e-910a48f88dbb'
     },
     {
-      name: '难得',
-      singer: '安来宁',
-      cover: '//cdn.lijinke.cn/nande.jpg',
-      musicSrc: '//cdn.lijinke.cn/nande.mp3'
+      name: 'I Forgot That You Existed',
+      singer: 'Taylor Swift',
+      cover:
+        'https://firebasestorage.googleapis.com/v0/b/joozify.appspot.com/o/ImageURL%2FInter%2FTaylor%20Swift%20-%20Lover.jpg?alt=media&token=16d0a451-73fd-4656-9ae7-5dc1cb1b29ae',
+      musicSrc: `https://firebasestorage.googleapis.com/v0/b/joozify.appspot.com/o/MusicURL%2FTaylor%20Swift%20-%20I%20Forgot%20That%20You%20Existed.mp3?alt=media&token=4298c206-46fd-4c7f-8280-618d010f6e27`
     }
   ],
   playModeText: {
@@ -52,6 +53,7 @@ class PlayerTime extends Component {
     super(props);
     this.changestatusplay = this.changestatusplay.bind(this);
     this.changestatuspause = this.changestatuspause.bind(this);
+    this.onAddAudio = this.onAddAudio.bind(this);
   }
   state = {
     params: options,
@@ -65,10 +67,11 @@ class PlayerTime extends Component {
       audioLists: [
         ...this.state.params.audioLists,
         {
-          name: "I'm new here",
-          singer: 'jack',
-          cover: 'http://www.lijinke.cn/music/1387583682387727.jpg',
-          musicSrc: `http://www.lijinke.cn/music/${Date.now()}.mp3`
+          name: 'I Forgot That You Existed',
+          singer: 'Taylor Swift',
+          cover:
+            'https://firebasestorage.googleapis.com/v0/b/joozify.appspot.com/o/ImageURL%2FInter%2FTaylor%20Swift%20-%20Lover.jpg?alt=media&token=16d0a451-73fd-4656-9ae7-5dc1cb1b29ae',
+          musicSrc: `https://firebasestorage.googleapis.com/v0/b/joozify.appspot.com/o/MusicURL%2FTaylor%20Swift%20-%20I%20Forgot%20That%20You%20Existed.mp3?alt=media&token=4298c206-46fd-4c7f-8280-618d010f6e27`
         }
       ]
     };

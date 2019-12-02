@@ -1,5 +1,5 @@
 import tlj from '../src/assets/img/trending/TLJ.jpg';
-import ints from '../src/assets/img/Cover/Kpop/TWICE - Feel Special(New Release).jpg';
+
 import ias from '../src/assets/img/trending/IAS.jpg';
 import lk from '../src/assets/img/trending/LK.jpg';
 import to from '../src/assets/img/trending/TO.jpg';
@@ -18,9 +18,10 @@ import dPoster from '../src/assets/img/trending/d-poster.jpg';
 
 const movies = {
   is: {
-    image: ints,
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/joozify.appspot.com/o/ImageURL%2FK-pop%2FTWICE%20-%20Feel%20Special(New%20Release).jpg?alt=media&token=bfebc5d1-6515-421d-afdb-967a497cfdff',
     poster: intsPoster,
-    title: 'Interstellar',
+    title: '',
     match: '97%',
     rating: 'PG-12',
     duration: '2h 49m',
