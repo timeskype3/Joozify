@@ -15,7 +15,7 @@ export default class Admin extends Component {
   state = {
     showModal: false,
     showModal2: false,
-    showModal3: false,
+    showModal3: false
   };
 
   onBtnUpload = e => {
@@ -59,14 +59,26 @@ export default class Admin extends Component {
     });
   };
 
-  onBtnUser = () => {
-    // Show all user in database
-    users.get().then(snapshot => {
-      snapshot.forEach(doc => {
-        console.log('user', doc.id, doc.data());
-      });
-    });
-  };
+  // onBtnUser = () => {
+  //   // Show all user in database
+  //   users.get().then(snapshot => {
+  //     snapshot.forEach(doc => {
+  //       // console.log('user', doc.id, doc.data());
+  //       let userlist = [...this.state.userlist];
+  //       userlist.push({
+  //         id: doc.id,
+  //         email: doc.data().email,
+  //         nickname: doc.data().nickname,
+  //         phone: doc.data().phone,
+  //         role: doc.data().role
+  //       })
+  //       this.setState({userlist});
+  //       console.log('user id: ',userlist[1].id, 'user email: ',userlist[1].email);
+  //       // console.log('doc id: ',doc.id, 'doc email: ',doc.data().email);
+
+  //     });
+  //   });
+  // };
 
   render() {
     const navStyle = {
