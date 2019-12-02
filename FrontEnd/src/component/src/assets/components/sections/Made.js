@@ -7,11 +7,11 @@ class Made extends React.Component {
       <div className="sections made-for-you">
         <p className="title">Made for you</p>
         <div className="grid">
-          {Object.keys(this.props.movies)
+          {Object.keys(this.props.music)
             .reverse()
             .map(key => {
               return (
-                <Grid key={key} details={this.props.movies[key]} index={key} />
+                <Grid key={key} details={this.props.music[key]} index={key} />
               );
             })}
         </div>

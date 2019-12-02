@@ -7,11 +7,11 @@ class Popular extends React.Component {
       <div className="sections popular">
         <p className="title">Popular on Joozify</p>
         <div className="grid">
-          {Object.keys(this.props.movies)
+          {Object.keys(this.props.music)
             .reverse()
             .map(key => {
               return (
-                <Grid key={key} details={this.props.movies[key]} index={key} />
+                <Grid key={key} details={this.props.music[key]} index={key} />
               );
             })}
         </div>

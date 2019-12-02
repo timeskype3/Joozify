@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Movie extends React.Component {
+class Music extends React.Component {
   render() {
     const {
       title,
@@ -10,7 +10,7 @@ class Movie extends React.Component {
       stars,
       genre,
       poster
-    } = this.props.location.state.movieProps;
+    } = this.props.location.state.musicProps;
 
     return (
       <div className="movie">
@@ -43,4 +43,4 @@ class Movie extends React.Component {
   }
 }
 
-export default Movie;
+export default Music;

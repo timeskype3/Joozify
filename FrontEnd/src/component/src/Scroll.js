@@ -9,7 +9,7 @@ import './assets/css/styles.css';
 //COMPONENTS
 
 import Homepage from './assets/components/Homepage';
-import Movie from './assets/components/Movie';
+import Movie from './assets/components/Music';
 
 class Scroll extends React.Component {
   render() {
@@ -18,7 +18,7 @@ class Scroll extends React.Component {
         <div className="main">
           <div className="container">
             <Route path="/main" exact component={Homepage} />
-            <Route path="/main/music/:movieId" component={Movie} />
+            <Route path="/main/music/:musicId" component={Movie} />
           </div>
         </div>
       </Router>
