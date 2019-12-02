@@ -4,27 +4,27 @@ import Recently from './Recently';
 import Popular from './Popular';
 import NewReleases from './NewReleases';
 import Made from './Made';
-import movies from '../../../movies';
+import music from '../../../music';
 import { moveBack, moveForward } from '../../../Helpers';
 
 import firebase from '../../../../../firebase/index';
 
 const database = firebase.firestore;
-const music = database.collection('Music');
+const musics = database.collection('Music');
 
 class Sections extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies,
+      music,
       audio: []
     };
   }
 
   // audio query
   componentDidMount() {
-    console.log('section', music);
-    music.get().then(e => {
+    console.log('section', musics);
+    musics.get().then(e => {
       e.forEach(m => {
         console.log(m.id, ' => ', m.data());
         this.setState(prevState => {
@@ -63,7 +63,7 @@ class Sections extends React.Component {
               className="fa fa-chevron-right forward-arrow"
               onClick={e => this.sendForward(recently)}
             />
-            <Recently movies={this.state.movies} />
+            <Recently music={this.state.music} />
           </div>
           <div className="section">
             <i
@@ -74,7 +74,7 @@ class Sections extends React.Component {
               className="fa fa-chevron-right forward-arrow"
               onClick={e => this.sendForward(popular)}
             />
-            <Popular movies={this.state.movies} />
+            <Popular music={this.state.music} />
           </div>
           <div className="section">
             <i
@@ -85,7 +85,7 @@ class Sections extends React.Component {
               className="fa fa-chevron-right forward-arrow"
               onClick={e => this.sendForward(newReleases)}
             />
-            <NewReleases movies={this.state.movies} />
+            <NewReleases music={this.state.music} />
           </div>
           <div className="section">
             <i
@@ -96,7 +96,7 @@ class Sections extends React.Component {
               className="fa fa-chevron-right forward-arrow"
               onClick={e => this.sendForward(madeforyou)}
             />
-            <Made movies={this.state.movies} />
+            <Made music={this.state.music} />
           </div>
         </div>
         <br />

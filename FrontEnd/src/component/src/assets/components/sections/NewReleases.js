@@ -7,9 +7,9 @@ class NewReleases extends React.Component {
       <div className="sections new-releases">
         <p className="title">New Releases</p>
         <div className="grid">
-          {Object.keys(this.props.movies).map(key => {
+          {Object.keys(this.props.music).map(key => {
             return (
-              <Grid key={key} details={this.props.movies[key]} index={key} />
+              <Grid key={key} details={this.props.music[key]} index={key} />
             );
           })}
         </div>

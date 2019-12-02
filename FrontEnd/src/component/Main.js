@@ -85,7 +85,6 @@ export default class Main extends Component {
             <div className="Categories">
               <h1 className="Titile-menu">YOUR LIBRARY </h1>
               <Icon type="appstore" theme="filled" style={icon} />
-
               <div className="Titile-submenu">Made For You</div>
               <div className="Titile-submenu">Recently Playing</div>
               <div className="Titile-submenu">Liked Songs</div>

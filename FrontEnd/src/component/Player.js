@@ -17,7 +17,7 @@ let options = {
       name: 'Feel Special',
       singer: 'Twice',
       cover:
-        'https://firebasestorage.googleapis.com/v0/b/joozify.appspot.com/o/ImageURL%2FK-pop%2FTWICE%20-%20Feel%20Special(New%20Release).jpg?alt=media&token=bfebc5d1-6515-421d-afdb-967a497cfdff',
+        'https://firebasestorage.googleapis.com/v0/b/joozify.appspot.com/o/ImageURL%2FK-pop%2FTwice%20-%20Fancy%20You.png?alt=media&token=14b17cc1-2c0b-46be-879f-4ad987a91de9',
       musicSrc:
         'https://firebasestorage.googleapis.com/v0/b/joozify.appspot.com/o/MusicURL%2FFeel%20Special.mp3?alt=media&token=0ffff46e-a750-4d65-859e-910a48f88dbb'
     },
@@ -27,6 +27,14 @@ let options = {
       cover:
         'https://firebasestorage.googleapis.com/v0/b/joozify.appspot.com/o/ImageURL%2FInter%2FTaylor%20Swift%20-%20Lover.jpg?alt=media&token=16d0a451-73fd-4656-9ae7-5dc1cb1b29ae',
       musicSrc: `https://firebasestorage.googleapis.com/v0/b/joozify.appspot.com/o/MusicURL%2FTaylor%20Swift%20-%20I%20Forgot%20That%20You%20Existed.mp3?alt=media&token=4298c206-46fd-4c7f-8280-618d010f6e27`
+    },
+    {
+      name: 'STAND ALONE',
+      singer: 'HANA',
+      cover:
+        'https://firebasestorage.googleapis.com/v0/b/joozify.appspot.com/o/ImageURL%2FJpop%2FCover.jpg?alt=media&token=c1993adb-bfb4-441d-bc43-7f88018bc910',
+      musicSrc:
+        'https://firebasestorage.googleapis.com/v0/b/joozify.appspot.com/o/MusicURL%2F01%20STAND-ALONE.mp3?alt=media&token=0d298e22-27d0-4bab-85be-ca4177c6c929'
     }
   ],
   playModeText: {

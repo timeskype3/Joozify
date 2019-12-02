@@ -17,7 +17,7 @@ class Grid extends React.Component {
     } = this.props.details;
     const newTitle = title.replace(/[^A-Z0-9]/gi, '');
 
-    const movieProps = {
+    const musicProps = {
       title,
       duration,
       userRating,
@@ -40,7 +40,7 @@ class Grid extends React.Component {
       <Link
         to={{
           pathname: `/main/music/${newTitle}`,
-          state: { movieProps }
+          state: { musicProps }
         }}
         className={`grid-item ${newTitle}`}
       >
