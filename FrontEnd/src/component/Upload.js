@@ -1,10 +1,14 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-return-assign */
 import React, { Component } from 'react';
 import { Upload, message, Button, Icon, Form, Input, DatePicker } from 'antd';
 import firebase from '../firebase';
 
-const { storage } = firebase;
+const { storage, firestore } = firebase;
 const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
+
+const database = firestore.collection('Music');
 
 // export default function UploadForm() {
 
@@ -21,7 +25,16 @@ export default class UploadForm extends Component {
       file: {},
       filename: '',
       download: '',
-      finish: false
+      finish: false,
+      forms: {
+        Artist: '',
+        Album: '',
+        Genre: '',
+        Title: '',
+        UrlImage: '',
+        UrlMusic: '',
+        Date: ''
+      }
     };
   }
 
@@ -37,30 +50,75 @@ export default class UploadForm extends Component {
   //   const file =
   // }
 
-  onChangeDate(date, dateString) {
-    console.log(date, dateString);
+  onChangeDate = (date, dateString) => {
+    return this.setState(prevState => {
+      return {
+        ...prevState,
+        forms: {
+          ...prevState.forms,
+          Date: date.format('DD-MM-YYYY')
+        }
+      };
+    });
   };
 
-  onUploadChange = e => {
+  onUploadImageChange = e => {
     // console.log('upload change', e.target);
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        finish: false
+      };
+    });
     const file = e.target.files[0];
     const filename = file.name;
     console.log('before append', file);
     if (file) {
-      return this.setState(prevState => {
-        const data = new FormData();
-        data.append(filename, file);
-        console.log('after append', data);
-        return {
-          ...prevState,
-          file,
-          filename
-        };
-      });
+      return this.setState(
+        prevState => {
+          const data = new FormData();
+          data.append(filename, file);
+          console.log('after append', data);
+          return {
+            ...prevState,
+            file,
+            filename
+          };
+        },
+        () => this.onUploadImage()
+      );
     }
   };
 
-  onUpload = () => {
+  onUploadMusicChange = e => {
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        finish: false
+      };
+    });
+    // console.log('upload change', e.target);
+    const fileMusic = e.target.files[0];
+    const filenameMusic = fileMusic.name;
+    console.log('before append', fileMusic);
+    if (fileMusic) {
+      return this.setState(
+        prevState => {
+          const data = new FormData();
+          data.append(filenameMusic, fileMusic);
+          console.log('after append', data);
+          return {
+            ...prevState,
+            fileMusic,
+            filenameMusic
+          };
+        },
+        () => this.onUploadMusic()
+      );
+    }
+  };
+
+  onUploadImage = () => {
     console.log(this.state);
     const { file, filename } = this.state;
 
@@ -74,7 +132,11 @@ export default class UploadForm extends Component {
           return {
             ...prevState,
             download,
-            finish: true
+            finish: true,
+            forms: {
+              ...prevState.forms,
+              UrlImage: download
+            }
           };
         });
       })
@@ -85,25 +147,51 @@ export default class UploadForm extends Component {
 
   onUploadMusic = () => {
     console.log(this.state);
-    const { file, filename } = this.state;
+    const { fileMusic, filenameMusic } = this.state;
 
     storage
-      .ref(`music/${filename}`)
-      .put(file)
+      .ref(`music/${filenameMusic}`)
+      .put(fileMusic)
       .then(async snapshots => {
         console.log('file uploaded', snapshots);
         const download = await snapshots.ref.getDownloadURL();
         return this.setState(prevState => {
           return {
             ...prevState,
-            download,
-            finish: true
+            finish: true,
+            forms: {
+              ...prevState.forms,
+              UrlMusic: download
+            }
           };
         });
       })
       .catch(err => {
         console.error('firebase err', err);
       });
+  };
+
+  onChange = e => {
+    console.log(e.target.id, e.target.value);
+    let input = {};
+    input = {
+      ...input,
+      [e.target.id]: e.target.value
+    };
+
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        forms: { ...prevState.forms, ...input }
+      };
+    });
+  };
+
+  onSave = () => {
+    database.add(this.state.forms).then(doc => {
+      console.log('doc id', doc.id);
+      return this.props.onSave();
+    });
   };
 
   render() {
@@ -120,36 +208,54 @@ export default class UploadForm extends Component {
         {/* <span>{this.state.download}</span> */}
         <Form.Item label="Digital Album">
           <img src={this.state.download} />
-          <Input onChange={this.onUploadChange} type="file" />
+          <Input onChange={this.onUploadImageChange} type="file" />
           {/* <Button onClick={this.onUpload}>Upload</Button> */}
         </Form.Item>
 
         <Form.Item label="Title">
-          <Input style={{ width: '80%' }} />
+          <Input onChange={this.onChange} id="Title" style={{ width: '80%' }} />
         </Form.Item>
 
         <Form.Item label="Artist">
-          <Input style={{ width: '80%' }} />
+          <Input
+            onChange={this.onChange}
+            id="Artist"
+            style={{ width: '80%' }}
+          />
         </Form.Item>
 
         <Form.Item label="Genre">
-          <Input style={{ width: '80%' }} />
+          <Input onChange={this.onChange} id="Genre" style={{ width: '80%' }} />
         </Form.Item>
 
         <Form.Item label="Album">
-          <Input style={{ width: '80%' }} />
+          <Input onChange={this.onChange} id="Album" style={{ width: '80%' }} />
         </Form.Item>
 
         <Form.Item label="Date Release">
-          <DatePicker onChange={this.onChangeDate} />
+          <DatePicker
+            // onChange={this.onChange}
+            id="Date"
+            onChange={this.onChangeDate}
+          />
         </Form.Item>
 
         <Form.Item label="FileMP3">
-          <Input onChange={this.onUploadChange} type="file" />
+          <Input
+            // onChange={this.onChange}
+            onChange={this.onUploadMusicChange}
+            type="file"
+          />
           {/* <Button onClick={this.onUploadMusic}>Upload</Button> */}
         </Form.Item>
 
-        <Button type="primary" size="large" onClick={this.onUpload}>Upload</Button>
+        {this.state.finish ? (
+          <Button type="primary" size="large" onClick={this.onSave}>
+            Save
+          </Button>
+        ) : (
+          'loading'
+        )}
       </Form>
     );
   }
