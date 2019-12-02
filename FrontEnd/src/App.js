@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
-
 import firebase from './firebase/index';
 //CSS
 import 'antd/dist/antd.css';
@@ -8,9 +7,7 @@ import 'antd/dist/antd.css';
 //Component
 import Login from './component/Login';
 import Main from './component/Main';
-import Store from './component/Store';
 import Admin from './component/Admin';
-import Upload from './component/Upload';
 
 class App extends Component {
   state = {
@@ -49,21 +46,11 @@ class App extends Component {
     }
   }
   render() {
-    // console.log(firebase.auth().currentUser);
-
-    // function checkLogin() {
-    // if (currentUser) {
-    //   this.props.history.push('/main');
-    // }
-    // }
-    // console.log('If Current user: ', currentUser);
     return (
       <React.Fragment>
         <Route path="/" exact component={Login} />
         <Route path="/main" component={Main} />
-        <Route path="/store" component={Store} />
         <Route path="/admin" component={Admin} />
-        <Route path="/upload" component={Upload} />
       </React.Fragment>
     );
   }

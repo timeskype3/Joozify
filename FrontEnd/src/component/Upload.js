@@ -9,26 +9,31 @@ const { storage, firestore } = firebase;
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 const database = firestore.collection('Music');
 
+const initialState = {
+  storageRefs: {},
+  file: {},
+  filename: '',
+  fileMusic: null,
+  download: '',
+  finish: false,
+  forms: {
+    Artist: '',
+    Album: '',
+    Genre: '',
+    Title: '',
+    UrlImage: '',
+    UrlMusic: '',
+    Date: ''
+  }
+};
+
 export default class UploadForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      storageRefs: {},
-      file: {},
-      filename: '',
-      fileMusic: null,
-      download: '',
-      finish: false,
-      forms: {
-        Artist: '',
-        Album: '',
-        Genre: '',
-        Title: '',
-        UrlImage: '',
-        UrlMusic: '',
-        Date: ''
-      }
-    };
+    this.state = initialState;
+  }
+  reset() {
+    this.setState(initialState);
   }
 
   onChangeDate = (date, dateString) => {

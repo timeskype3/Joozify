@@ -1,40 +1,10 @@
 import React, { Component } from 'react';
 import firebase from '../firebase/index';
-import { Table, Button } from 'antd';
+import { Table, Button, Input, Icon } from 'antd';
+import Highlighter from 'react-highlight-words';
 
 const database = firebase.firestore;
 const Music = database.collection('Music');
-
-const columns = [
-  {
-    title: 'Title',
-    dataIndex: 'Title'
-  },
-  {
-    title: 'Artist',
-    dataIndex: 'Artist'
-  },
-  {
-    title: 'Album',
-    dataIndex: 'Album'
-  },
-  {
-    title: 'Genre',
-    dataIndex: 'Genre'
-  },
-  {
-    title: 'UrlImage',
-    dataIndex: 'UrlImage'
-  },
-  {
-    title: 'UrlMusic',
-    dataIndex: 'UrlMusic'
-  },
-  {
-    title: 'Date',
-    dataIndex: 'Date'
-  }
-];
 
 export default class Delete extends Component {
   constructor(props) {
@@ -43,10 +13,89 @@ export default class Delete extends Component {
     this.state = {
       selectedRowKeys: [], // Check here to configure the default column
       loading: false,
-      Musiclist: []
+      Musiclist: [],
+      searchText: '',
+      searchedColumn: ''
     };
   }
+  getColumnSearchProps = dataIndex => ({
+    filterDropdown: ({
+      setSelectedKeys,
+      selectedKeys,
+      confirm,
+      clearFilters
+    }) => (
+      <div style={{ padding: 8 }}>
+        <Input
+          ref={node => {
+            this.searchInput = node;
+          }}
+          placeholder={`Search ${dataIndex}`}
+          value={selectedKeys[0]}
+          onChange={e =>
+            setSelectedKeys(e.target.value ? [e.target.value] : [])
+          }
+          onPressEnter={() =>
+            this.handleSearch(selectedKeys, confirm, dataIndex)
+          }
+          style={{ width: 188, marginBottom: 8, display: 'block' }}
+        />
+        <Button
+          type="primary"
+          onClick={() => this.handleSearch(selectedKeys, confirm, dataIndex)}
+          icon="search"
+          size="small"
+          style={{ width: 90, marginRight: 8 }}
+        >
+          Search
+        </Button>
+        <Button
+          onClick={() => this.handleReset(clearFilters)}
+          size="small"
+          style={{ width: 90 }}
+        >
+          Reset
+        </Button>
+      </div>
+    ),
+    filterIcon: filtered => (
+      <Icon type="search" style={{ color: filtered ? '#1890ff' : undefined }} />
+    ),
+    onFilter: (value, record) =>
+      record[dataIndex]
+        .toString()
+        .toLowerCase()
+        .includes(value.toLowerCase()),
+    onFilterDropdownVisibleChange: visible => {
+      if (visible) {
+        setTimeout(() => this.searchInput.select());
+      }
+    },
+    render: text =>
+      this.state.searchedColumn === dataIndex ? (
+        <Highlighter
+          highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
+          searchWords={[this.state.searchText]}
+          autoEscape
+          textToHighlight={text.toString()}
+        />
+      ) : (
+        text
+      )
+  });
 
+  handleSearch = (selectedKeys, confirm, dataIndex) => {
+    confirm();
+    this.setState({
+      searchText: selectedKeys[0],
+      searchedColumn: dataIndex
+    });
+  };
+
+  handleReset = clearFilters => {
+    clearFilters();
+    this.setState({ searchText: '' });
+  };
   query = Music.get().then(snapshot => {
     snapshot.forEach(doc => {
       let Musiclist = [...this.state.Musiclist];
@@ -76,7 +125,6 @@ export default class Delete extends Component {
       });
     }, 1000);
 
-    console.log('delete lists');
     const task = this.state.selectedRowKeys;
 
     const deletedTask = task.map(e => {
@@ -95,12 +143,12 @@ export default class Delete extends Component {
   };
 
   onSelectChange = selectedRowKeys => {
-    console.log('selectedRowKeys changed: ', selectedRowKeys);
+    // console.log('selectedRowKeys changed: ', selectedRowKeys);
     this.setState({ selectedRowKeys });
   };
 
   render() {
-    console.log('cur states', this.state);
+    // console.log('cur states', this.state);
     const { loading, selectedRowKeys } = this.state;
     const rowSelection = {
       selectedRowKeys,
@@ -108,6 +156,43 @@ export default class Delete extends Component {
     };
     const hasSelected = selectedRowKeys.length > 0;
     const Musiclist = this.state.Musiclist;
+    const columns = [
+      {
+        title: 'Title',
+        dataIndex: 'Title',
+        ...this.getColumnSearchProps('Title')
+      },
+      {
+        title: 'Artist',
+        dataIndex: 'Artist',
+        ...this.getColumnSearchProps('Artist')
+      },
+      {
+        title: 'Album',
+        dataIndex: 'Album',
+        ...this.getColumnSearchProps('Album')
+      },
+      {
+        title: 'Genre',
+        dataIndex: 'Genre',
+        ...this.getColumnSearchProps('Genre')
+      },
+      {
+        title: 'UrlImage',
+        dataIndex: 'UrlImage',
+        ...this.getColumnSearchProps('UrlImage')
+      },
+      {
+        title: 'UrlMusic',
+        dataIndex: 'UrlMusic',
+        ...this.getColumnSearchProps('UrlMusic')
+      },
+      {
+        title: 'Date',
+        dataIndex: 'Date',
+        ...this.getColumnSearchProps('Date')
+      }
+    ];
     return (
       <div>
         <div style={{ marginBottom: 16 }}>
